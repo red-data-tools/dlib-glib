@@ -39,3 +39,11 @@ gnome.generate_gir(libdlib_glib,
                    extra_args: [
                      '--warn-all',
                    ])
+
+pkg = import('pkgconfig')
+pkg.generate(filebase: meson.project_name(),
+             name: 'Dlib GLib',
+             description: 'C API for Dlib based on GLib',
+             version: meson.project_version(),
+             requires: ['gobject-2.0', 'dlib'],
+             libraries: [libdlib_glib])
