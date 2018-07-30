@@ -13,4 +13,4 @@ export LD_LIBRARY_PATH="${build_dir}/${module}:${LD_LIBRARY_PATH}"
 
 export GI_TYPELIB_PATH="${build_dir}/${module}:${GI_TYPELIB_PATH}"
 
-ruby ${test_dir}/test-image.rb "$@"
+${test_dir}/run-test.rb "$@"

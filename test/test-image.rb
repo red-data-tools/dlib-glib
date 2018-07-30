@@ -1,8 +1,3 @@
-require "test-unit"
-
-require "gi"
-DLIB = GI.load("DLIB")
-
 class TestImage < Test::Unit::TestCase
   def test_new
     assert_nothing_raised do
