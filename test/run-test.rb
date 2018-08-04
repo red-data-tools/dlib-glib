@@ -1,10 +1,16 @@
 #!/usr/bin/env ruby
 
 require "test-unit"
+require "pathname"
 
-test_dir = __dir__
+base_dir = Pathname(__dir__).parent
+test_dir = base_dir + "test"
 
 require "gi"
+
 DLIB = GI.load("DLIB")
+
+require "tempfile"
+require_relative "helper/fixture"
 
 exit(Test::Unit::AutoRunner.run(true, test_dir.to_s))
