@@ -96,6 +96,66 @@ gdlib_rectangle_new(void)
   return gdlib_rectangle_new_raw(&rectangle);
 }
 
+/**
+ * gdlib_rectangle_left:
+ * @rectangle: A #GDLIBRectangle.
+ *
+ * Returns: The position of this rectangle.
+ *
+ * Since: 1.0.0
+ */
+glong
+gdlib_rectangle_left(GDLIBRectangle *rectangle)
+{
+  auto dlib_rectangle = gdlib_rectangle_get_raw(rectangle);
+  return dlib_rectangle->left();
+}
+
+/**
+ * gdlib_rectangle_top:
+ * @rectangle: A #GDLIBRectangle.
+ *
+ * Returns: The position of this rectangle.
+ *
+ * Since: 1.0.0
+ */
+glong
+gdlib_rectangle_top(GDLIBRectangle *rectangle)
+{
+  auto dlib_rectangle = gdlib_rectangle_get_raw(rectangle);
+  return dlib_rectangle->top();
+}
+
+/**
+ * gdlib_rectangle_right:
+ * @rectangle: A #GDLIBRectangle.
+ *
+ * Returns: The position of this rectangle.
+ *
+ * Since: 1.0.0
+ */
+glong
+gdlib_rectangle_right(GDLIBRectangle *rectangle)
+{
+  auto dlib_rectangle = gdlib_rectangle_get_raw(rectangle);
+  return dlib_rectangle->right();
+}
+
+/**
+ * gdlib_rectangle_bottom:
+ * @rectangle: A #GDLIBRectangle.
+ *
+ * Returns: The position of this rectangle.
+ *
+ * Since: 1.0.0
+ */
+glong
+gdlib_rectangle_bottom(GDLIBRectangle *rectangle)
+{
+  auto dlib_rectangle = gdlib_rectangle_get_raw(rectangle);
+  return dlib_rectangle->bottom();
+}
+
 G_END_DECLS
 
 GDLIBRectangle *

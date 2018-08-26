@@ -17,5 +17,9 @@ struct _GDLIBRectangleClass
 };
 
 GDLIBRectangle *gdlib_rectangle_new(void);
+glong gdlib_rectangle_left(GDLIBRectangle *rectangle);
+glong gdlib_rectangle_top(GDLIBRectangle *rectangle);
+glong gdlib_rectangle_right(GDLIBRectangle *rectangle);
+glong gdlib_rectangle_bottom(GDLIBRectangle *rectangle);
 
 G_END_DECLS
