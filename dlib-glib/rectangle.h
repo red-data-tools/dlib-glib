@@ -16,7 +16,8 @@ struct _GDLIBRectangleClass
   GObjectClass parent_class;
 };
 
-GDLIBRectangle *gdlib_rectangle_new(void);
+GDLIBRectangle *gdlib_rectangle_new(glong left, glong top, glong right, glong bottom);
+GDLIBRectangle *gdlib_rectangle_new_empty(void);
 glong gdlib_rectangle_left(GDLIBRectangle *rectangle);
 glong gdlib_rectangle_top(GDLIBRectangle *rectangle);
 glong gdlib_rectangle_right(GDLIBRectangle *rectangle);

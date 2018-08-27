@@ -84,13 +84,31 @@ gdlib_rectangle_class_init(GDLIBRectangleClass *klass)
 
 /**
  * gdlib_rectangle_new:
+ * @left: A value of the left coordinate.
+ * @top: A value of the top coordinate.
+ * @right: A value of the right coordinate.
+ * @bottom: A value of the bottom coordinate.
  *
- * Returns: A newly read #GDLIBRectangle.
+ * Returns: A newly created #GDLIBRectangle.
  *
  * Since: 1.0.0
  */
 GDLIBRectangle *
-gdlib_rectangle_new(void)
+gdlib_rectangle_new(glong left, glong top, glong right, glong bottom)
+{
+  auto rectangle = std::make_shared<dlib::rectangle>(left, top, right, bottom);
+  return gdlib_rectangle_new_raw(&rectangle);
+}
+
+/**
+ * gdlib_rectangle_new_empty:
+ *
+ * Returns: A newly created empty #GDLIBRectangle.
+ *
+ * Since: 1.0.0
+ */
+GDLIBRectangle *
+gdlib_rectangle_new_empty(void)
 {
   auto rectangle = std::make_shared<dlib::rectangle>();
   return gdlib_rectangle_new_raw(&rectangle);
