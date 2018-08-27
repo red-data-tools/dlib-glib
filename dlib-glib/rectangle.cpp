@@ -118,7 +118,7 @@ gdlib_rectangle_new_empty(void)
  * gdlib_rectangle_left:
  * @rectangle: A #GDLIBRectangle.
  *
- * Returns: The position of this rectangle.
+ * Returns: The value of the left coordinate.
  *
  * Since: 1.0.0
  */
@@ -133,7 +133,7 @@ gdlib_rectangle_left(GDLIBRectangle *rectangle)
  * gdlib_rectangle_top:
  * @rectangle: A #GDLIBRectangle.
  *
- * Returns: The position of this rectangle.
+ * Returns: The value of the top coordinate.
  *
  * Since: 1.0.0
  */
@@ -148,7 +148,7 @@ gdlib_rectangle_top(GDLIBRectangle *rectangle)
  * gdlib_rectangle_right:
  * @rectangle: A #GDLIBRectangle.
  *
- * Returns: The position of this rectangle.
+ * Returns: The value of the right coordinate.
  *
  * Since: 1.0.0
  */
@@ -163,7 +163,7 @@ gdlib_rectangle_right(GDLIBRectangle *rectangle)
  * gdlib_rectangle_bottom:
  * @rectangle: A #GDLIBRectangle.
  *
- * Returns: The position of this rectangle.
+ * Returns: The value of the bottom coordinate.
  *
  * Since: 1.0.0
  */
