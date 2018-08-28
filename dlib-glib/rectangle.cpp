@@ -174,6 +174,62 @@ gdlib_rectangle_bottom(GDLIBRectangle *rectangle)
   return dlib_rectangle->bottom();
 }
 
+/**
+ * gdlib_rectangle_set_left:
+ * @rectangle: A #GDLIBRectangle.
+ * @left: A new value of the left coordinate.
+ *
+ * Since: 1.0.0
+ */
+void
+gdlib_rectangle_set_left(GDLIBRectangle *rectangle, glong left)
+{
+  auto dlib_rectangle = gdlib_rectangle_get_raw(rectangle);
+  dlib_rectangle->set_left(left);
+}
+
+/**
+ * gdlib_rectangle_set_top:
+ * @rectangle: A #GDLIBRectangle.
+ * @top: A new value of the top coordinate.
+ *
+ * Since: 1.0.0
+ */
+void
+gdlib_rectangle_set_top(GDLIBRectangle *rectangle, glong top)
+{
+  auto dlib_rectangle = gdlib_rectangle_get_raw(rectangle);
+  dlib_rectangle->set_top(top);
+}
+
+/**
+ * gdlib_rectangle_set_right:
+ * @rectangle: A #GDLIBRectangle.
+ * @right: A new value of the right coordinate.
+ *
+ * Since: 1.0.0
+ */
+void
+gdlib_rectangle_set_right(GDLIBRectangle *rectangle, glong right)
+{
+  auto dlib_rectangle = gdlib_rectangle_get_raw(rectangle);
+  dlib_rectangle->set_right(right);
+}
+
+/**
+ * gdlib_rectangle_set_bottom:
+ * @rectangle: A #GDLIBRectangle.
+ * @bottom: A new value of the bottom coordinate.
+ *
+ * Since: 1.0.0
+ */
+void
+gdlib_rectangle_set_bottom(GDLIBRectangle *rectangle, glong bottom)
+{
+  auto dlib_rectangle = gdlib_rectangle_get_raw(rectangle);
+  dlib_rectangle->set_bottom(bottom);
+}
+
 G_END_DECLS
 
 GDLIBRectangle *

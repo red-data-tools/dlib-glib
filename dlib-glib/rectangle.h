@@ -22,5 +22,9 @@ glong gdlib_rectangle_left(GDLIBRectangle *rectangle);
 glong gdlib_rectangle_top(GDLIBRectangle *rectangle);
 glong gdlib_rectangle_right(GDLIBRectangle *rectangle);
 glong gdlib_rectangle_bottom(GDLIBRectangle *rectangle);
+void gdlib_rectangle_set_left(GDLIBRectangle *rectangle, glong left);
+void gdlib_rectangle_set_top(GDLIBRectangle *rectangle, glong top);
+void gdlib_rectangle_set_right(GDLIBRectangle *rectangle, glong right);
+void gdlib_rectangle_set_bottom(GDLIBRectangle *rectangle, glong bottom);
 
 G_END_DECLS
