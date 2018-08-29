@@ -115,7 +115,7 @@ gdlib_rectangle_new_empty(void)
 }
 
 /**
- * gdlib_rectangle_left:
+ * gdlib_rectangle_get_left:
  * @rectangle: A #GDLIBRectangle.
  *
  * Returns: The value of the left coordinate.
@@ -123,14 +123,14 @@ gdlib_rectangle_new_empty(void)
  * Since: 1.0.0
  */
 glong
-gdlib_rectangle_left(GDLIBRectangle *rectangle)
+gdlib_rectangle_get_left(GDLIBRectangle *rectangle)
 {
   auto dlib_rectangle = gdlib_rectangle_get_raw(rectangle);
   return dlib_rectangle->left();
 }
 
 /**
- * gdlib_rectangle_top:
+ * gdlib_rectangle_get_top:
  * @rectangle: A #GDLIBRectangle.
  *
  * Returns: The value of the top coordinate.
@@ -138,14 +138,14 @@ gdlib_rectangle_left(GDLIBRectangle *rectangle)
  * Since: 1.0.0
  */
 glong
-gdlib_rectangle_top(GDLIBRectangle *rectangle)
+gdlib_rectangle_get_top(GDLIBRectangle *rectangle)
 {
   auto dlib_rectangle = gdlib_rectangle_get_raw(rectangle);
   return dlib_rectangle->top();
 }
 
 /**
- * gdlib_rectangle_right:
+ * gdlib_rectangle_get_right:
  * @rectangle: A #GDLIBRectangle.
  *
  * Returns: The value of the right coordinate.
@@ -153,14 +153,14 @@ gdlib_rectangle_top(GDLIBRectangle *rectangle)
  * Since: 1.0.0
  */
 glong
-gdlib_rectangle_right(GDLIBRectangle *rectangle)
+gdlib_rectangle_get_right(GDLIBRectangle *rectangle)
 {
   auto dlib_rectangle = gdlib_rectangle_get_raw(rectangle);
   return dlib_rectangle->right();
 }
 
 /**
- * gdlib_rectangle_bottom:
+ * gdlib_rectangle_get_bottom:
  * @rectangle: A #GDLIBRectangle.
  *
  * Returns: The value of the bottom coordinate.
@@ -168,7 +168,7 @@ gdlib_rectangle_right(GDLIBRectangle *rectangle)
  * Since: 1.0.0
  */
 glong
-gdlib_rectangle_bottom(GDLIBRectangle *rectangle)
+gdlib_rectangle_get_bottom(GDLIBRectangle *rectangle)
 {
   auto dlib_rectangle = gdlib_rectangle_get_raw(rectangle);
   return dlib_rectangle->bottom();

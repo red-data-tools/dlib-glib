@@ -18,10 +18,10 @@ struct _GDLIBRectangleClass
 
 GDLIBRectangle *gdlib_rectangle_new(glong left, glong top, glong right, glong bottom);
 GDLIBRectangle *gdlib_rectangle_new_empty(void);
-glong gdlib_rectangle_left(GDLIBRectangle *rectangle);
-glong gdlib_rectangle_top(GDLIBRectangle *rectangle);
-glong gdlib_rectangle_right(GDLIBRectangle *rectangle);
-glong gdlib_rectangle_bottom(GDLIBRectangle *rectangle);
+glong gdlib_rectangle_get_left(GDLIBRectangle *rectangle);
+glong gdlib_rectangle_get_top(GDLIBRectangle *rectangle);
+glong gdlib_rectangle_get_right(GDLIBRectangle *rectangle);
+glong gdlib_rectangle_get_bottom(GDLIBRectangle *rectangle);
 void gdlib_rectangle_set_left(GDLIBRectangle *rectangle, glong left);
 void gdlib_rectangle_set_top(GDLIBRectangle *rectangle, glong top);
 void gdlib_rectangle_set_right(GDLIBRectangle *rectangle, glong right);
