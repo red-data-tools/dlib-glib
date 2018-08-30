@@ -120,6 +120,8 @@ gdlib_image_save_jpeg(GDLIBImage *image, const gchar *filename)
  * @red: A red pixel value.
  * @green: A green pixel value.
  * @blue: A blue pixel value.
+ *
+ * Since: 1.0.0
  */
 void *
 gdlib_image_draw_rectangle(GDLIBImage *image,
