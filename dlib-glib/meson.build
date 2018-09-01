@@ -2,12 +2,14 @@ sources = files(
   'detector.cpp',
   'image.cpp',
   'rectangle.cpp',
+  'shape-predictor.cpp'
 )
 
 headers = files(
   'detector.h',
   'image.h',
   'rectangle.h',
+  'shape-predictor.h'
 )
 
 install_headers(headers, subdir: meson.project_name())
