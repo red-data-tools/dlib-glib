@@ -5,6 +5,7 @@
 
 #include <dlib-glib/full-object-detection.hpp>
 #include <dlib-glib/shape-predictor.hpp>
+#include <dlib-glib/rectangle.hpp>
 
 G_BEGIN_DECLS
 
@@ -99,6 +100,25 @@ gdlib_full_object_detection_new(void)
   auto dlib_full_object_detection
     = std::make_shared<dlib::full_object_detection>();
   return gdlib_full_object_detection_new_raw(&dlib_full_object_detection);
+}
+
+/**
+ * gdlib_full_object_detection_rectangle:
+ * @full_object_detection: A #GDLIBFullObjectDetection.
+ *
+ * Returns: (transfer full):
+ *   The #GDLIBRectangle of the full object detection.
+ *
+ * Since: 1.0.0
+ */
+GDLIBRectangle *
+gdlib_full_object_detection_rectangle(GDLIBFullObjectDetection *full_object_detection)
+{
+  auto dlib_full_object_detection
+    = gdlib_full_object_detection_get_raw(full_object_detection);
+  auto dlib_rectangle
+    = std::make_shared<dlib::rectangle>(dlib_full_object_detection->get_rect());
+  return gdlib_rectangle_new_raw(&dlib_rectangle);
 }
 
 G_END_DECLS

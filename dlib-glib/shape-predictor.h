@@ -3,6 +3,8 @@
 #include <glib-object.h>
 
 #include <dlib-glib/full-object-detection.h>
+#include <dlib-glib/image.h>
+#include <dlib-glib/rectangle.h>
 
 G_BEGIN_DECLS
 

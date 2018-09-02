@@ -2,7 +2,6 @@
 
 #include <glib-object.h>
 
-#include <dlib-glib/image.h>
 #include <dlib-glib/rectangle.h>
 
 G_BEGIN_DECLS
@@ -20,5 +19,6 @@ struct _GDLIBFullObjectDetectionClass
 };
 
 GDLIBFullObjectDetection *gdlib_full_object_detection_new(void);
+GDLIBRectangle *gdlib_full_object_detection_rectangle(GDLIBFullObjectDetection *full_object_detection);
 
 G_END_DECLS
