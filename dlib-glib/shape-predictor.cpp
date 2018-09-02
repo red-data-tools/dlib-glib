@@ -1,8 +1,12 @@
 #include <memory>
 
 #include <dlib/image_processing/shape_predictor.h>
+#include <dlib/image_processing/full_object_detection.h>
 
+#include <dlib-glib/full-object-detection.hpp>
 #include <dlib-glib/shape-predictor.hpp>
+#include <dlib-glib/image.hpp>
+#include <dlib-glib/rectangle.hpp>
 
 G_BEGIN_DECLS
 
@@ -86,16 +90,44 @@ gdlib_shape_predictor_class_init(GDLIBShapePredictorClass *klass)
 
 /**
  * gdlib_shape_predictor_new:
+ * @predictor: The trained shape predictor model.
  *
  * Returns: A newly read #GDLIBShapePredictor.
  *
  * Since: 1.0.0
  */
 GDLIBShapePredictor *
-gdlib_shape_predictor_new(void)
+gdlib_shape_predictor_new(const gchar *predictor)
 {
   auto shape_predictor = std::make_shared<dlib::shape_predictor>();
+  dlib::deserialize(predictor) >> *shape_predictor;
   return gdlib_shape_predictor_new_raw(&shape_predictor);
+}
+
+/**
+ * gdlib_shape_predictor_detect:
+ * @shape_predictor: A #GDLIBShapePredictor.
+ * @image: A #GDLIBImage.
+ * @rectangle: A #GDLIBRectangle.
+ *
+ * Returns: (transfer full): The #GDLIBFullObjectDetection.
+ *
+ * Since: 1.0.0
+ */
+GDLIBFullObjectDetection *
+gdlib_shape_predictor_detect(GDLIBShapePredictor *shape_predictor,
+                             GDLIBImage *image,
+                             GDLIBRectangle *rectangle)
+{
+  auto dlib_shape_predictor
+    = *gdlib_shape_predictor_get_raw(shape_predictor);
+  auto dlib_image = gdlib_image_get_raw(image);
+  auto dlib_rectangle = gdlib_rectangle_get_raw(rectangle);
+  auto full_object_detection
+    = dlib_shape_predictor(*dlib_image, *dlib_rectangle);
+  auto dlib_full_object_detection
+    = std::make_shared<dlib::full_object_detection>(full_object_detection);
+  return gdlib_full_object_detection_new_raw(&dlib_full_object_detection);
 }
 
 G_END_DECLS
