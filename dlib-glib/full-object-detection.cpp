@@ -121,6 +121,22 @@ gdlib_full_object_detection_rectangle(GDLIBFullObjectDetection *full_object_dete
   return gdlib_rectangle_new_raw(&dlib_rectangle);
 }
 
+/**
+ * gdlib_full_object_detection_get_n_parts:
+ * @full_object_detection: A #GDLIBFullObjectDetection.
+ *
+ * Returns: The number of parts of the full object detection.
+ *
+ * Since: 1.0.0
+ */
+gulong
+gdlib_full_object_detection_get_n_parts(GDLIBFullObjectDetection *full_object_detection)
+{
+  auto dlib_full_object_detection
+    = gdlib_full_object_detection_get_raw(full_object_detection);
+  return dlib_full_object_detection->num_parts();
+}
+
 G_END_DECLS
 
 GDLIBFullObjectDetection *
