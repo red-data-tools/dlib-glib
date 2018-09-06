@@ -3,7 +3,8 @@ sources = files(
   'image.cpp',
   'rectangle.cpp',
   'shape-predictor.cpp',
-  'full-object-detection.cpp'
+  'full-object-detection.cpp',
+  'widgets.cpp'
 )
 
 headers = files(
@@ -11,7 +12,8 @@ headers = files(
   'image.h',
   'rectangle.h',
   'shape-predictor.h',
-  'full-object-detection.h'
+  'full-object-detection.h',
+  'widgets.h'
 )
 
 install_headers(headers, subdir: meson.project_name())
@@ -19,6 +21,7 @@ install_headers(headers, subdir: meson.project_name())
 dependencies = [
   dependency('gobject-2.0'),
   dependency('dlib-1'),
+  dependency('x11')
 ]
 libdlib_glib = library('dlib-glib',
                          sources: sources,
