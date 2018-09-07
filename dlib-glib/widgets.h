@@ -17,5 +17,6 @@ struct _GDLIBWidgetsClass
 };
 
 GDLIBWidgets *gdlib_widgets_new(void);
+void gdlib_widgets_clear_overlay(GDLIBWidgets *widgets);
 
 G_END_DECLS

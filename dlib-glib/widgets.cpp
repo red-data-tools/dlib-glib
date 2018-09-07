@@ -98,6 +98,19 @@ gdlib_widgets_new(void)
   return gdlib_widgets_new_raw(&widgets);
 }
 
+/**
+ * gdlib_widgets_clear_overlay:
+ * @widgets: A #GDLIBWidgets.
+ *
+ * Since: 1.0.0
+ */
+void
+gdlib_widgets_clear_overlay(GDLIBWidgets *widgets)
+{
+  auto dlib_widgets = gdlib_widgets_get_raw(widgets);
+  dlib_widgets->clear_overlay();
+}
+
 G_END_DECLS
 
 GDLIBWidgets *
@@ -107,4 +120,11 @@ gdlib_widgets_new_raw(std::shared_ptr<dlib::image_window> *dlib_widgets)
                               "widgets", dlib_widgets,
                               NULL);
   return GDLIB_WIDGETS(widgets);
+}
+
+std::shared_ptr<dlib::image_window>
+gdlib_widgets_get_raw(GDLIBWidgets *widgets)
+{
+  auto priv = GDLIB_WIDGETS_GET_PRIVATE(widgets);
+  return priv->widgets;
 }
