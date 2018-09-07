@@ -3,6 +3,7 @@
 #include <dlib/gui_widgets.h>
 
 #include <dlib-glib/widgets.hpp>
+#include <dlib-glib/image.hpp>
 
 G_BEGIN_DECLS
 
@@ -109,6 +110,22 @@ gdlib_widgets_clear_overlay(GDLIBWidgets *widgets)
 {
   auto dlib_widgets = gdlib_widgets_get_raw(widgets);
   dlib_widgets->clear_overlay();
+}
+
+/**
+ * gdlib_widgets_set_image:
+ * @widgets: A #GDLIBWidgets.
+ * @image: A #GDLIBImage.
+ *
+ * Since: 1.0.0
+ */
+void
+gdlib_widgets_set_image(GDLIBWidgets *widgets,
+                        GDLIBImage *image)
+{
+  auto dlib_widgets = gdlib_widgets_get_raw(widgets);
+  auto dlib_image = gdlib_image_get_raw(image);
+  dlib_widgets->set_image(*dlib_image);
 }
 
 G_END_DECLS

@@ -2,6 +2,8 @@
 
 #include <glib-object.h>
 
+#include <dlib-glib/image.h>
+
 G_BEGIN_DECLS
 
 #define GDLIB_TYPE_WIDGETS (gdlib_widgets_get_type())
@@ -18,5 +20,7 @@ struct _GDLIBWidgetsClass
 
 GDLIBWidgets *gdlib_widgets_new(void);
 void gdlib_widgets_clear_overlay(GDLIBWidgets *widgets);
+void gdlib_widgets_set_image(GDLIBWidgets *widgets,
+                             GDLIBImage *image);
 
 G_END_DECLS
