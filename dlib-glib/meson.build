@@ -4,7 +4,8 @@ sources = files(
   'rectangle.cpp',
   'shape-predictor.cpp',
   'full-object-detection.cpp',
-  'widgets.cpp'
+  'widgets.cpp',
+  'overlay-line.cpp'
 )
 
 headers = files(
@@ -13,7 +14,8 @@ headers = files(
   'rectangle.h',
   'shape-predictor.h',
   'full-object-detection.h',
-  'widgets.h'
+  'widgets.h',
+  'overlay-line.h'
 )
 
 install_headers(headers, subdir: meson.project_name())
