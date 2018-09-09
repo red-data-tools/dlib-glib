@@ -3,6 +3,7 @@
 #include <dlib/image_processing/render_face_detections.h>
 
 #include <dlib-glib/overlay-line.hpp>
+#include <dlib-glib/full-object-detection.hpp>
 
 G_BEGIN_DECLS
 
@@ -97,6 +98,37 @@ gdlib_overlay_line_new(void)
   auto dlib_overlay_line
     = std::make_shared<dlib::image_window::overlay_line>();
   return gdlib_overlay_line_new_raw(&dlib_overlay_line);
+}
+
+/**
+ * gdlib_overlay_line_render_face_detections:
+ * @full_object_detections: (element-type GDLIBFullObjectDetection):
+ *    The full_object_detections.
+ *
+ * Returns: (element-type GDLIBOverlayLine) (transfer full):
+ *   The #GDLIBOverlayLine in the full object detections.
+ *
+ * Since: 1.0.0
+ */
+GList *
+gdlib_overlay_line_render_face_detections(GList *full_object_detections)
+{
+  std::vector<dlib::full_object_detection> dlib_full_object_detections;
+  for (GList *node = full_object_detections; node; node = node->next) {
+    GDLIBFullObjectDetection *full_object_detection = GDLIB_FULL_OBJECT_DETECTION(node->data);
+    dlib_full_object_detections.push_back(*gdlib_full_object_detection_get_raw(full_object_detection));
+  }
+  auto dlib_overlay_lines = dlib::render_face_detections(dlib_full_object_detections);
+  auto size = dlib_overlay_lines.size();
+  GList *overlay_lines = NULL;
+  for (gsize i = 0; i < size; ++i) {
+    auto dlib_overlay_line
+      = std::make_shared<dlib::image_window::overlay_line>(dlib_overlay_lines[i]);
+    GDLIBOverlayLine *overlay_line = gdlib_overlay_line_new_raw(&dlib_overlay_line);
+    overlay_lines = g_list_prepend(overlay_lines, overlay_line);
+  }
+
+  return g_list_reverse(overlay_lines);
 }
 
 G_END_DECLS
