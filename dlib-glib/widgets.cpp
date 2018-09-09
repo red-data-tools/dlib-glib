@@ -4,6 +4,7 @@
 
 #include <dlib-glib/widgets.hpp>
 #include <dlib-glib/image.hpp>
+#include <dlib-glib/overlay-line.hpp>
 
 G_BEGIN_DECLS
 
@@ -126,6 +127,27 @@ gdlib_widgets_set_image(GDLIBWidgets *widgets,
   auto dlib_widgets = gdlib_widgets_get_raw(widgets);
   auto dlib_image = gdlib_image_get_raw(image);
   dlib_widgets->set_image(*dlib_image);
+}
+
+/**
+ * gdlib_widgets_add_overlay:
+ * @widgets: A #GDLIBWidgets.
+ * @overlay_lines: (element-type GDLIBOverlayLine):
+ *   The overlay lines in the widgets.
+ *
+ * Since: 1.0.0
+ */
+void
+gdlib_widgets_add_overlay(GDLIBWidgets *widgets,
+                          GList *overlay_lines)
+{
+  auto dlib_widgets = gdlib_widgets_get_raw(widgets);
+  std::vector<dlib::image_window::overlay_line> dlib_overlay_lines;
+  for (GList *node = overlay_lines; node; node = node->next) {
+    GDLIBOverlayLine *overlay_line = GDLIB_OVERLAY_LINE(node->data);
+    dlib_overlay_lines.push_back(*gdlib_overlay_line_get_raw(overlay_line));
+  }
+  dlib_widgets->add_overlay(dlib_overlay_lines);
 }
 
 G_END_DECLS
