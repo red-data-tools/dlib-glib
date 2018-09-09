@@ -18,7 +18,7 @@ struct _GDLIBFullObjectDetectionClass
   GObjectClass parent_class;
 };
 
-GDLIBFullObjectDetection *gdlib_full_object_detection_new(void);
+GDLIBFullObjectDetection *gdlib_full_object_detection_new(GDLIBRectangle *rectangle);
 GDLIBRectangle *gdlib_full_object_detection_rectangle(GDLIBFullObjectDetection *full_object_detection);
 gulong gdlib_full_object_detection_get_n_parts(GDLIBFullObjectDetection *full_object_detection);
 

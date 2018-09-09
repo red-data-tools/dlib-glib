@@ -89,16 +89,18 @@ gdlib_full_object_detection_class_init(GDLIBFullObjectDetectionClass *klass)
 
 /**
  * gdlib_full_object_detection_new:
+ * @rectangle: A #GDLIBRectangle.
  *
  * Returns: A newly read #GDLIBFullObjectDetection.
  *
  * Since: 1.0.0
  */
 GDLIBFullObjectDetection *
-gdlib_full_object_detection_new(void)
+gdlib_full_object_detection_new(GDLIBRectangle *rectangle)
 {
+  auto dlib_rectangle = gdlib_rectangle_get_raw(rectangle);
   auto dlib_full_object_detection
-    = std::make_shared<dlib::full_object_detection>();
+    = std::make_shared<dlib::full_object_detection>(*dlib_rectangle);
   return gdlib_full_object_detection_new_raw(&dlib_full_object_detection);
 }
 
