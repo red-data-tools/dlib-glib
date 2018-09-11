@@ -105,12 +105,11 @@ gdlib_image_new(const gchar *filename)
  *
  * Since: 1.0.0
  */
-void *
+void
 gdlib_image_save_jpeg(GDLIBImage *image, const gchar *filename)
 {
   auto dlib_image = gdlib_image_get_raw(image);
   dlib::save_jpeg(*dlib_image, filename);
-  return image;
 }
 
 /**
@@ -123,7 +122,7 @@ gdlib_image_save_jpeg(GDLIBImage *image, const gchar *filename)
  *
  * Since: 1.0.0
  */
-void *
+void
 gdlib_image_draw_rectangle(GDLIBImage *image,
                            GDLIBRectangle *rectangle,
                            gdouble red,
@@ -134,7 +133,6 @@ gdlib_image_draw_rectangle(GDLIBImage *image,
   auto dlib_rectangle = gdlib_rectangle_get_raw(rectangle);
   auto dlib_rgb_pixel = dlib::rgb_pixel(red, green, blue);
   dlib::draw_rectangle(*dlib_image, *dlib_rectangle, dlib_rgb_pixel);
-  return image;
 }
 
 G_END_DECLS
