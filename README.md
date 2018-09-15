@@ -21,6 +21,8 @@ DLIB = GI.load("DLIB")
 
 ## Install
 
+### How to build by users
+
 You need to install the followings before you install Dlib GLib:
 
   * [Dlib][dlib]
@@ -34,11 +36,31 @@ You need to install the followings before you install Dlib GLib:
 You can build and install Dlib GLib after you install them:
 
 ```console
-% rm -rf ../dlib-glib.build
-% meson ../dlib-glib.build \
-   --prefix=/tmp/local
-% ninja -C ../dlib-glib.build
-% ninja -C ../dlib-glib.build install
+% mkdir -p build
+% meson build --buildtype=release
+% (cd build && ninja)
+% (cd build && ninja install)
+```
+
+### How to build by developers
+
+You need to install the followings before you install Dlib GLib:
+
+  * [Dlib][dlib]
+
+  * [GObject Introspection][gobject-introspection]
+
+  * [Meson][meson]
+
+  * [Ninja][ninja]
+
+  * [GTK-Doc][gtk-doc]
+
+```console
+% mkdir -p build
+% meson build -Dgtk_doc=true
+% (cd build && ninja)
+% (cd build && ninja install)
 ```
 
 ## Usage
@@ -58,5 +80,7 @@ TODO
 [meson]:http://mesonbuild.com/
 
 [ninja]:https://ninja-build.org/
+
+[gtk-doc]:https://www.gtk.org/gtk-doc/
 
 [Boost Software License]:https://www.boost.org/users/license.html
