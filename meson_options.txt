@@ -1,0 +1,6 @@
+# -*- meson -*-
+
+option('gtk_doc',
+       type: 'boolean',
+       value: false,
+       description: 'Build document by GTK-Doc')

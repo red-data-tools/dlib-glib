@@ -34,6 +34,12 @@ libdlib_glib = library('dlib-glib',
                          ],
                          version: library_version)
 
+libdlib_glib_dependency = declare_dependency(link_with: libdlib_glib,
+                                             include_directories: [
+                                               root_inc,
+                                             ],
+                                             dependencies: dependencies)
+
 gnome.generate_gir(libdlib_glib,
                    sources: sources + headers,
                    namespace: 'DLIB',
