@@ -24,5 +24,6 @@ void gdlib_widgets_set_image(GDLIBWidgets *widgets,
                              GDLIBImage *image);
 void gdlib_widgets_add_overlay(GDLIBWidgets *widgets,
                                GList *overlay_lines);
+void gdlib_widgets_wait_until_closed(GDLIBWidgets *widgets);
 
 G_END_DECLS

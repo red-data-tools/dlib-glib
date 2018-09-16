@@ -150,6 +150,19 @@ gdlib_widgets_add_overlay(GDLIBWidgets *widgets,
   dlib_widgets->add_overlay(dlib_overlay_lines);
 }
 
+/**
+ * gdlib_widgets_wait_until_closed:
+ * @widgets: A #GDLIBWidgets.
+ *
+ * Since: 1.0.0
+ */
+void
+gdlib_widgets_wait_until_closed(GDLIBWidgets *widgets)
+{
+  auto dlib_widgets = gdlib_widgets_get_raw(widgets);
+  dlib_widgets->wait_until_closed();
+}
+
 G_END_DECLS
 
 GDLIBWidgets *
