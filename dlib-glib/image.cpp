@@ -88,6 +88,8 @@ gdlib_image_class_init(GDLIBImageClass *klass)
  * gdlib_image_new:
  * @filename: The filename to be read.
  *
+ * Returns: A newly created #GDLIBImage.
+ *
  * Since: 1.0.0
  */
 GDLIBImage *
@@ -100,6 +102,8 @@ gdlib_image_new(const gchar *filename)
 
 /**
  * gdlib_image_new_empty:
+ *
+ * Returns: A newly created empty #GDLIBImage.
  *
  * Since: 1.0.0
  */
