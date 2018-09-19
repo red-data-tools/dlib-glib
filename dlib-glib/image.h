@@ -20,7 +20,8 @@ struct _GDLIBImageClass
 
 GDLIBImage *gdlib_image_new(const gchar *filename);
 GDLIBImage *gdlib_image_new_empty(void);
-void gdlib_image_save_jpeg(GDLIBImage *image, const gchar *filename);
+void gdlib_image_save_jpeg(GDLIBImage *image,
+                           const gchar *filename);
 void gdlib_image_draw_rectangle(GDLIBImage *image,
                                 GDLIBRectangle *rectangle,
                                 gdouble red,

@@ -122,7 +122,8 @@ gdlib_image_new_empty(void)
  * Since: 1.0.0
  */
 void
-gdlib_image_save_jpeg(GDLIBImage *image, const gchar *filename)
+gdlib_image_save_jpeg(GDLIBImage *image,
+                      const gchar *filename)
 {
   auto dlib_image = gdlib_image_get_raw(image);
   dlib::save_jpeg(*dlib_image, filename);
