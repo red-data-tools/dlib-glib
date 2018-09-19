@@ -36,10 +36,9 @@ You need to install the followings before you install Dlib GLib:
 You can build and install Dlib GLib after you install them:
 
 ```console
-% mkdir -p build
 % meson build --buildtype=release
-% (cd build && ninja)
-% (cd build && ninja install)
+% ninja -C build
+% ninja -C build install)
 ```
 
 ### How to build by developers
@@ -57,10 +56,9 @@ You need to install the followings before you install Dlib GLib:
   * [GTK-Doc][gtk-doc]
 
 ```console
-% mkdir -p build
 % meson build -Dgtk_doc=true
-% (cd build && ninja)
-% (cd build && ninja install)
+% ninja -C build
+% ninja -C build install)
 ```
 
 ## Usage
