@@ -22,9 +22,9 @@
     <xi:include href="xml/rectangle.xml"/>
     <xi:include href="xml/shape-predictor.xml"/>
   </chapter>
-  <chapter id="widgets">
-    <title>Widgets</title>
-    <xi:include href="xml/widgets.xml"/>
+  <chapter id="image_window">
+    <title>ImageWindow</title>
+    <xi:include href="xml/image_window.xml"/>
   </chapter>
   <chapter id="object-tree">
     <title>Object Hierarchy</title>
