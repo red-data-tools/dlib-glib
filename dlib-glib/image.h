@@ -19,11 +19,14 @@ struct _GDLIBImageClass
 };
 
 GDLIBImage *gdlib_image_new(const gchar *filename);
+GDLIBImage *gdlib_image_new_empty(void);
 void gdlib_image_save_jpeg(GDLIBImage *image, const gchar *filename);
 void gdlib_image_draw_rectangle(GDLIBImage *image,
                                 GDLIBRectangle *rectangle,
                                 gdouble red,
                                 gdouble green,
                                 gdouble blue);
+GDLIBImage *gdlib_image_gaussian_blur(GDLIBImage *image,
+                                      GDLIBImage *blurred_image);
 
 G_END_DECLS
