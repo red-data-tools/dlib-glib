@@ -155,6 +155,7 @@ gdlib_image_draw_rectangle(GDLIBImage *image,
 /**
  * gdlib_image_gaussian_blur:
  * @image: A #GDLIBImage.
+ * @blurred_image: A #GDLIBImage.
  *
  * Returns: (transfer full): The image blurred
  *   using Gaussian function.
