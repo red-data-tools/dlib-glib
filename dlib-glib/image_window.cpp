@@ -1,10 +1,13 @@
 #include <memory>
 
 #include <dlib/gui_widgets.h>
+#include <dlib/image_transforms/interpolation.h>
+#include <dlib/image_transforms/draw.h>
 
 #include <dlib-glib/image_window.hpp>
 #include <dlib-glib/image.hpp>
 #include <dlib-glib/overlay-line.hpp>
+#include <dlib-glib/chip-detail.hpp>
 
 G_BEGIN_DECLS
 
@@ -161,6 +164,32 @@ gdlib_image_window_wait_until_closed(GDLIBImageWindow *image_window)
 {
   auto dlib_image_window = gdlib_image_window_get_raw(image_window);
   dlib_image_window->wait_until_closed();
+}
+
+/**
+ * gdlib_image_window_set_face_chip_details:
+ * @image_window: A #GDLIBImageWindow.
+ * @image: A #GDLIBImage.
+ * @chip_details: (element-type GDLIBChipDetail):
+ *   The #GDLIBChipDetail in the full object detections.
+ *
+ * Since: 1.0.0
+ */
+void
+gdlib_image_window_set_face_chip_details(GDLIBImageWindow *image_window,
+                                         GDLIBImage *image,
+                                         GList *chip_details)
+{
+  auto dlib_image_window = gdlib_image_window_get_raw(image_window);
+  auto dlib_image = gdlib_image_get_raw(image);
+  std::vector<dlib::chip_details> dlib_chip_details;
+  for (GList *node = chip_details; node; node = node->next) {
+    GDLIBChipDetail *chip_detail = GDLIB_CHIP_DETAIL(node->data);
+    dlib_chip_details.push_back(*gdlib_chip_detail_get_raw(chip_detail));
+  }
+  dlib::array<dlib::array2d<dlib::rgb_pixel>> dlib_face_chips;
+  dlib::extract_image_chips(*dlib_image, dlib_chip_details, dlib_face_chips);
+  dlib_image_window->set_image(dlib::tile_images(dlib_face_chips));
 }
 
 G_END_DECLS

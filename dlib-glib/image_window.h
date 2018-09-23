@@ -25,5 +25,8 @@ void gdlib_image_window_set_image(GDLIBImageWindow *image_window,
 void gdlib_image_window_add_overlay(GDLIBImageWindow *image_window,
                                     GList *overlay_lines);
 void gdlib_image_window_wait_until_closed(GDLIBImageWindow *image_window);
+void gdlib_image_window_set_face_chip_details(GDLIBImageWindow *image_window,
+                                              GDLIBImage *image,
+                                              GList *chip_details);
 
 G_END_DECLS
