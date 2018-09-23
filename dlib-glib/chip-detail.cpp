@@ -99,6 +99,37 @@ gdlib_chip_detail_new(void)
   return gdlib_chip_detail_new_raw(&chip_detail);
 }
 
+/**
+ * gdlib_chip_detail_get_face_chip_details:
+ * @full_object_detections: (element-type GDLIBFullObjectDetection):
+ *   The full_object_detections.
+ *
+ * Returns: (element-type GDLIBChipDetail) (transfer full):
+ *   The #GDLIBChipDetail in the full object detections.
+ *
+ * Since: 1.0.0
+ */
+GList *
+gdlib_chip_detail_get_face_chip_details(GList *full_object_detections)
+{
+  std::vector<dlib::full_object_detection> dlib_full_object_detections;
+  for (GList *node = full_object_detections; node; node = node->next) {
+    GDLIBFullObjectDetection *full_object_detection = GDLIB_FULL_OBJECT_DETECTION(node->data);
+    dlib_full_object_detections.push_back(*gdlib_full_object_detection_get_raw(full_object_detection));
+  }
+  auto dlib_chip_details = dlib::get_face_chip_details(dlib_full_object_detections);
+  auto size = dlib_chip_details.size();
+  GList *chip_details = NULL;
+  for (gsize i = 0; i < size; ++i) {
+    auto dlib_chip_detail
+      = std::make_shared<dlib::chip_details>(dlib_chip_details[i]);
+    GDLIBChipDetail *chip_detail = gdlib_chip_detail_new_raw(&dlib_chip_detail);
+    chip_details = g_list_prepend(chip_details, chip_detail);
+  }
+
+  return g_list_reverse(chip_details);
+}
+
 G_END_DECLS
 
 GDLIBChipDetail *

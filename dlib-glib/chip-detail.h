@@ -20,5 +20,6 @@ struct _GDLIBChipDetailClass
 };
 
 GDLIBChipDetail *gdlib_chip_detail_new(void);
+GList *gdlib_chip_detail_get_face_chip_details(GList *full_object_detections);
 
 G_END_DECLS
