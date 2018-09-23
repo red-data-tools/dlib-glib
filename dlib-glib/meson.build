@@ -5,7 +5,8 @@ sources = files(
   'shape-predictor.cpp',
   'full-object-detection.cpp',
   'image_window.cpp',
-  'overlay-line.cpp'
+  'overlay-line.cpp',
+  'chip-detail.cpp'
 )
 
 headers = files(
@@ -15,7 +16,8 @@ headers = files(
   'shape-predictor.h',
   'full-object-detection.h',
   'image_window.h',
-  'overlay-line.h'
+  'overlay-line.h',
+  'chip-detail.h'
 )
 
 install_headers(headers, subdir: meson.project_name())
