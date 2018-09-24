@@ -8,7 +8,7 @@
 G_BEGIN_DECLS
 
 /**
- * SECTION: ship-detail
+ * SECTION: chip-detail
  * @title: ChipDetail class
  * @include: dlib-glib/dlib-glib.h
  *

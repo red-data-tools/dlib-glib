@@ -12,7 +12,7 @@
 G_BEGIN_DECLS
 
 /**
- * SECTION: image_window
+ * SECTION: image-window
  * @title: ImageWindow class
  * @include: dlib-glib/dlib-glib.h
  *
@@ -198,8 +198,8 @@ GDLIBImageWindow *
 gdlib_image_window_new_raw(std::shared_ptr<dlib::image_window> *dlib_image_window)
 {
   auto image_window = g_object_new(GDLIB_TYPE_IMAGE_WINDOW,
-                              "image_window", dlib_image_window,
-                              NULL);
+                                   "image_window", dlib_image_window,
+                                   NULL);
   return GDLIB_IMAGE_WINDOW(image_window);
 }
 
