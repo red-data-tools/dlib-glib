@@ -3,6 +3,7 @@
 
 #include <dlib-glib/image.hpp>
 #include <dlib-glib/rectangle.hpp>
+#include <dlib-glib/chip-detail.hpp>
 
 G_BEGIN_DECLS
 
@@ -170,6 +171,26 @@ gdlib_image_gaussian_blur(GDLIBImage *image,
   auto dlib_blurred_image = gdlib_image_get_raw(blurred_image);
   dlib::gaussian_blur(*dlib_image, *dlib_blurred_image);
   return gdlib_image_new_raw(&dlib_blurred_image);
+}
+
+/**
+ * gdlib_image_extract_image_chip:
+ * @image: A #GDLIBImage.
+ * @chip_detail: A #GDLIBChipDetail.
+ *
+ * Returns: (transfer full): The image of each face that are cropped.
+ *
+ * Since: 1.0.0
+ */
+GDLIBImage *
+gdlib_image_extract_image_chip(GDLIBImage *image,
+                               GDLIBChipDetail *chip_detail)
+{
+  auto dlib_image = gdlib_image_get_raw(image);
+  auto dlib_chip_detail = gdlib_chip_detail_get_raw(chip_detail);
+  auto dlib_face_chip = std::make_shared<dlib::array2d<dlib::rgb_pixel>>();
+  dlib::extract_image_chip(*dlib_image, *dlib_chip_detail, *dlib_face_chip);
+  return gdlib_image_new_raw(&dlib_face_chip);
 }
 
 G_END_DECLS

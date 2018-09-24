@@ -3,6 +3,7 @@
 #include <glib-object.h>
 
 #include <dlib-glib/rectangle.h>
+#include <dlib-glib/chip-detail.h>
 
 G_BEGIN_DECLS
 
@@ -29,5 +30,7 @@ void gdlib_image_draw_rectangle(GDLIBImage *image,
                                 gdouble blue);
 GDLIBImage *gdlib_image_gaussian_blur(GDLIBImage *image,
                                       GDLIBImage *blurred_image);
+GDLIBImage *gdlib_image_extract_image_chip(GDLIBImage *image,
+                                           GDLIBChipDetail *chip_detail);
 
 G_END_DECLS
