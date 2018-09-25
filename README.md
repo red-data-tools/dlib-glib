@@ -38,7 +38,7 @@ You can build and install Dlib GLib after you install them:
 ```console
 % meson build --buildtype=release
 % ninja -C build
-% ninja -C build install)
+% ninja -C build install
 ```
 
 ### How to build by developers
@@ -58,7 +58,7 @@ You need to install the followings before you install Dlib GLib:
 ```console
 % meson build -Dgtk_doc=true
 % ninja -C build
-% ninja -C build install)
+% ninja -C build install
 ```
 
 ## Usage

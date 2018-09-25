@@ -12,7 +12,7 @@ G_BEGIN_DECLS
  * @title: Image class
  * @include: dlib-glib/dlib-glib.h
  *
- * #GDLIBImage is a image class.
+ * #GDLIBImage is a class for image.
  *
  * Since: 1.0.0
  */
@@ -178,7 +178,8 @@ gdlib_image_gaussian_blur(GDLIBImage *image,
  * @image: A #GDLIBImage.
  * @chip_detail: A #GDLIBChipDetail.
  *
- * Returns: (transfer full): The image of each face that are cropped.
+ * Returns: (transfer full):
+ *     The image of each face that are cropped.
  *
  * Since: 1.0.0
  */

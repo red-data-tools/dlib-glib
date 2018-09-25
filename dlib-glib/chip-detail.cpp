@@ -12,7 +12,8 @@ G_BEGIN_DECLS
  * @title: ChipDetail class
  * @include: dlib-glib/dlib-glib.h
  *
- * #GDLIBChipDetail is a chip_detail class.
+ * #GDLIBChipDetail is a class for each face that
+ * are cropped, rotated, upright.
  *
  * Since: 1.0.0
  */
@@ -105,7 +106,7 @@ gdlib_chip_detail_new(void)
  *   The full_object_detections.
  *
  * Returns: (element-type GDLIBChipDetail) (transfer full):
- *   The #GDLIBChipDetail in the full object detections.
+ *   The face chip details in the full object detections.
  *
  * Since: 1.0.0
  */

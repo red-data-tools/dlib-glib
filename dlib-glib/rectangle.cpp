@@ -9,7 +9,7 @@ G_BEGIN_DECLS
  * @title: Rectangle class
  * @include: dlib-glib/dlib-glib.h
  *
- * #GDLIBRectangle is a rectangle class.
+ * #GDLIBRectangle is a class for rectangle.
  *
  * Since: 1.0.0
  */

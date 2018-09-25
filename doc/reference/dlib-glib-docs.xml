@@ -21,6 +21,7 @@
     <xi:include href="xml/overlay-line.xml"/>
     <xi:include href="xml/rectangle.xml"/>
     <xi:include href="xml/shape-predictor.xml"/>
+    <xi:include href="xml/chip-detail.xml"/>
   </chapter>
   <chapter id="image_window">
     <title>ImageWindow</title>

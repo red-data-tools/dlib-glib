@@ -12,7 +12,7 @@ G_BEGIN_DECLS
  * @title: OverlayLine class
  * @include: dlib-glib/dlib-glib.h
  *
- * #GDLIBOverlayLine is a overlay_line class.
+ * #GDLIBOverlayLine is a class for overlay line.
  *
  * Since: 1.0.0
  */
@@ -103,10 +103,10 @@ gdlib_overlay_line_new(void)
 /**
  * gdlib_overlay_line_render_face_detections:
  * @full_object_detections: (element-type GDLIBFullObjectDetection):
- *    The full_object_detections.
+ *    The full object detections.
  *
  * Returns: (element-type GDLIBOverlayLine) (transfer full):
- *   The #GDLIBOverlayLine in the full object detections.
+ *   The overlay lines rendering face detections with the full object detections.
  *
  * Since: 1.0.0
  */

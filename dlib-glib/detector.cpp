@@ -13,7 +13,7 @@ G_BEGIN_DECLS
  * @title: Detector class
  * @include: dlib-glib/dlib-glib.h
  *
- * #GDLIBDetector is a detector class.
+ * #GDLIBDetector is a class for face detector.
  *
  * Since: 1.0.0
  */
@@ -106,7 +106,7 @@ gdlib_detector_new(void)
  * @image: A #GDLIBImage.
  *
  * Returns: (element-type GDLIBRectangle) (transfer full):
- *   The #GDLIBRectangle of the rectangles.
+ *   The rectangles of the face detections is made using the now classic HOG feature combined with a linear classifier.
  *
  * Since: 1.0.0
  */

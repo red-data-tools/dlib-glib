@@ -15,7 +15,7 @@ G_BEGIN_DECLS
  * @title: ShapePredictor class
  * @include: dlib-glib/dlib-glib.h
  *
- * #GDLIBShapePredictor is a shape_predictor class.
+ * #GDLIBShapePredictor is a class for shape_predictor.
  *
  * Since: 1.0.0
  */
@@ -110,7 +110,8 @@ gdlib_shape_predictor_new(const gchar *predictor)
  * @image: A #GDLIBImage.
  * @rectangle: A #GDLIBRectangle.
  *
- * Returns: (transfer full): The #GDLIBFullObjectDetection.
+ * Returns: (transfer full):
+ *     The full object detection of each face detected.
  *
  * Since: 1.0.0
  */

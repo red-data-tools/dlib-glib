@@ -14,7 +14,7 @@ G_BEGIN_DECLS
  * @title: FullObjectDetection class
  * @include: dlib-glib/dlib-glib.h
  *
- * #GDLIBFullObjectDetection is a full_object_detection class.
+ * #GDLIBFullObjectDetection is a class for full object detection.
  *
  * Since: 1.0.0
  */
