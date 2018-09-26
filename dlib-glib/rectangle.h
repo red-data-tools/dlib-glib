@@ -4,27 +4,27 @@
 
 G_BEGIN_DECLS
 
-#define GDLIB_TYPE_RECTANGLE (gdlib_rectangle_get_type())
-G_DECLARE_DERIVABLE_TYPE(GDLIBRectangle,
+#define GDlib_TYPE_RECTANGLE (gdlib_rectangle_get_type())
+G_DECLARE_DERIVABLE_TYPE(GDlibRectangle,
                          gdlib_rectangle,
-                         GDLIB,
+                         GDlib,
                          RECTANGLE,
                          GObject)
 
-struct _GDLIBRectangleClass
+struct _GDlibRectangleClass
 {
   GObjectClass parent_class;
 };
 
-GDLIBRectangle *gdlib_rectangle_new(glong left, glong top, glong right, glong bottom);
-GDLIBRectangle *gdlib_rectangle_new_empty(void);
-glong gdlib_rectangle_get_left(GDLIBRectangle *rectangle);
-glong gdlib_rectangle_get_top(GDLIBRectangle *rectangle);
-glong gdlib_rectangle_get_right(GDLIBRectangle *rectangle);
-glong gdlib_rectangle_get_bottom(GDLIBRectangle *rectangle);
-void gdlib_rectangle_set_left(GDLIBRectangle *rectangle, glong left);
-void gdlib_rectangle_set_top(GDLIBRectangle *rectangle, glong top);
-void gdlib_rectangle_set_right(GDLIBRectangle *rectangle, glong right);
-void gdlib_rectangle_set_bottom(GDLIBRectangle *rectangle, glong bottom);
+GDlibRectangle *gdlib_rectangle_new(glong left, glong top, glong right, glong bottom);
+GDlibRectangle *gdlib_rectangle_new_empty(void);
+glong gdlib_rectangle_get_left(GDlibRectangle *rectangle);
+glong gdlib_rectangle_get_top(GDlibRectangle *rectangle);
+glong gdlib_rectangle_get_right(GDlibRectangle *rectangle);
+glong gdlib_rectangle_get_bottom(GDlibRectangle *rectangle);
+void gdlib_rectangle_set_left(GDlibRectangle *rectangle, glong left);
+void gdlib_rectangle_set_top(GDlibRectangle *rectangle, glong top);
+void gdlib_rectangle_set_right(GDlibRectangle *rectangle, glong right);
+void gdlib_rectangle_set_bottom(GDlibRectangle *rectangle, glong bottom);
 
 G_END_DECLS

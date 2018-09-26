@@ -14,21 +14,21 @@ G_BEGIN_DECLS
  * @title: FullObjectDetection class
  * @include: dlib-glib/dlib-glib.h
  *
- * #GDLIBFullObjectDetection is a class for full object detection.
+ * #GDlibFullObjectDetection is a class for full object detection.
  *
  * Since: 1.0.0
  */
 
 typedef struct {
   std::shared_ptr<dlib::full_object_detection> full_object_detection;
-} GDLIBFullObjectDetectionPrivate;
+} GDlibFullObjectDetectionPrivate;
 
-G_DEFINE_TYPE_WITH_PRIVATE(GDLIBFullObjectDetection, gdlib_full_object_detection, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE(GDlibFullObjectDetection, gdlib_full_object_detection, G_TYPE_OBJECT)
 
-#define GDLIB_FULL_OBJECT_DETECTION_GET_PRIVATE(obj)                     \
+#define GDlib_FULL_OBJECT_DETECTION_GET_PRIVATE(obj)                     \
   (G_TYPE_INSTANCE_GET_PRIVATE((obj),                                    \
-                               GDLIB_TYPE_FULL_OBJECT_DETECTION,         \
-                               GDLIBFullObjectDetectionPrivate))
+                               GDlib_TYPE_FULL_OBJECT_DETECTION,         \
+                               GDlibFullObjectDetectionPrivate))
 
 enum {
   PROP_0,
@@ -38,7 +38,7 @@ enum {
 static void
 gdlib_full_object_detection_finalize(GObject *object)
 {
-  auto priv = GDLIB_FULL_OBJECT_DETECTION_GET_PRIVATE(object);
+  auto priv = GDlib_FULL_OBJECT_DETECTION_GET_PRIVATE(object);
 
   priv->full_object_detection = nullptr;
 
@@ -51,7 +51,7 @@ gdlib_full_object_detection_set_property(GObject *object,
                                          const GValue *value,
                                          GParamSpec *pspec)
 {
-  auto priv = GDLIB_FULL_OBJECT_DETECTION_GET_PRIVATE(object);
+  auto priv = GDlib_FULL_OBJECT_DETECTION_GET_PRIVATE(object);
 
   switch (prop_id) {
   case PROP_FULL_OBJECT_DETECTION:
@@ -65,12 +65,12 @@ gdlib_full_object_detection_set_property(GObject *object,
 }
 
 static void
-gdlib_full_object_detection_init(GDLIBFullObjectDetection *object)
+gdlib_full_object_detection_init(GDlibFullObjectDetection *object)
 {
 }
 
 static void
-gdlib_full_object_detection_class_init(GDLIBFullObjectDetectionClass *klass)
+gdlib_full_object_detection_class_init(GDlibFullObjectDetectionClass *klass)
 {
   GParamSpec *spec;
 
@@ -89,14 +89,14 @@ gdlib_full_object_detection_class_init(GDLIBFullObjectDetectionClass *klass)
 
 /**
  * gdlib_full_object_detection_new:
- * @rectangle: A #GDLIBRectangle.
+ * @rectangle: A #GDlibRectangle.
  *
- * Returns: A newly read #GDLIBFullObjectDetection.
+ * Returns: A newly read #GDlibFullObjectDetection.
  *
  * Since: 1.0.0
  */
-GDLIBFullObjectDetection *
-gdlib_full_object_detection_new(GDLIBRectangle *rectangle)
+GDlibFullObjectDetection *
+gdlib_full_object_detection_new(GDlibRectangle *rectangle)
 {
   auto dlib_rectangle = gdlib_rectangle_get_raw(rectangle);
   auto dlib_full_object_detection
@@ -106,15 +106,15 @@ gdlib_full_object_detection_new(GDLIBRectangle *rectangle)
 
 /**
  * gdlib_full_object_detection_rectangle:
- * @full_object_detection: A #GDLIBFullObjectDetection.
+ * @full_object_detection: A #GDlibFullObjectDetection.
  *
  * Returns: (transfer full):
- *   The #GDLIBRectangle of the full object detection.
+ *   The #GDlibRectangle of the full object detection.
  *
  * Since: 1.0.0
  */
-GDLIBRectangle *
-gdlib_full_object_detection_rectangle(GDLIBFullObjectDetection *full_object_detection)
+GDlibRectangle *
+gdlib_full_object_detection_rectangle(GDlibFullObjectDetection *full_object_detection)
 {
   auto dlib_full_object_detection
     = gdlib_full_object_detection_get_raw(full_object_detection);
@@ -125,14 +125,14 @@ gdlib_full_object_detection_rectangle(GDLIBFullObjectDetection *full_object_dete
 
 /**
  * gdlib_full_object_detection_get_n_parts:
- * @full_object_detection: A #GDLIBFullObjectDetection.
+ * @full_object_detection: A #GDlibFullObjectDetection.
  *
  * Returns: The number of parts of the full object detection.
  *
  * Since: 1.0.0
  */
 gulong
-gdlib_full_object_detection_get_n_parts(GDLIBFullObjectDetection *full_object_detection)
+gdlib_full_object_detection_get_n_parts(GDlibFullObjectDetection *full_object_detection)
 {
   auto dlib_full_object_detection
     = gdlib_full_object_detection_get_raw(full_object_detection);
@@ -141,18 +141,18 @@ gdlib_full_object_detection_get_n_parts(GDLIBFullObjectDetection *full_object_de
 
 G_END_DECLS
 
-GDLIBFullObjectDetection *
+GDlibFullObjectDetection *
 gdlib_full_object_detection_new_raw(std::shared_ptr<dlib::full_object_detection> *dlib_full_object_detection)
 {
-  auto full_object_detection = g_object_new(GDLIB_TYPE_FULL_OBJECT_DETECTION,
+  auto full_object_detection = g_object_new(GDlib_TYPE_FULL_OBJECT_DETECTION,
                                             "full_object_detection", dlib_full_object_detection,
                                             NULL);
-  return GDLIB_FULL_OBJECT_DETECTION(full_object_detection);
+  return GDlib_FULL_OBJECT_DETECTION(full_object_detection);
 }
 
 std::shared_ptr<dlib::full_object_detection>
-gdlib_full_object_detection_get_raw(GDLIBFullObjectDetection *full_object_detection)
+gdlib_full_object_detection_get_raw(GDlibFullObjectDetection *full_object_detection)
 {
-  auto priv = GDLIB_FULL_OBJECT_DETECTION_GET_PRIVATE(full_object_detection);
+  auto priv = GDlib_FULL_OBJECT_DETECTION_GET_PRIVATE(full_object_detection);
   return priv->full_object_detection;
 }

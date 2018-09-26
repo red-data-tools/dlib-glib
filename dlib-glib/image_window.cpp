@@ -16,21 +16,21 @@ G_BEGIN_DECLS
  * @title: ImageWindow class
  * @include: dlib-glib/dlib-glib.h
  *
- * #GDLIBImageWindow is a image_window class.
+ * #GDlibImageWindow is a image_window class.
  *
  * Since: 1.0.0
  */
 
 typedef struct {
   std::shared_ptr<dlib::image_window> image_window;
-} GDLIBImageWindowPrivate;
+} GDlibImageWindowPrivate;
 
-G_DEFINE_TYPE_WITH_PRIVATE(GDLIBImageWindow, gdlib_image_window, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE(GDlibImageWindow, gdlib_image_window, G_TYPE_OBJECT)
 
-#define GDLIB_IMAGE_WINDOW_GET_PRIVATE(obj)                     \
+#define GDlib_IMAGE_WINDOW_GET_PRIVATE(obj)                     \
   (G_TYPE_INSTANCE_GET_PRIVATE((obj),                           \
-                               GDLIB_TYPE_IMAGE_WINDOW,         \
-                               GDLIBImageWindowPrivate))
+                               GDlib_TYPE_IMAGE_WINDOW,         \
+                               GDlibImageWindowPrivate))
 
 enum {
   PROP_0,
@@ -40,7 +40,7 @@ enum {
 static void
 gdlib_image_window_finalize(GObject *object)
 {
-  auto priv = GDLIB_IMAGE_WINDOW_GET_PRIVATE(object);
+  auto priv = GDlib_IMAGE_WINDOW_GET_PRIVATE(object);
 
   priv->image_window = nullptr;
 
@@ -53,7 +53,7 @@ gdlib_image_window_set_property(GObject *object,
                                 const GValue *value,
                                 GParamSpec *pspec)
 {
-  auto priv = GDLIB_IMAGE_WINDOW_GET_PRIVATE(object);
+  auto priv = GDlib_IMAGE_WINDOW_GET_PRIVATE(object);
 
   switch (prop_id) {
   case PROP_IMAGE_WINDOW:
@@ -67,12 +67,12 @@ gdlib_image_window_set_property(GObject *object,
 }
 
 static void
-gdlib_image_window_init(GDLIBImageWindow *object)
+gdlib_image_window_init(GDlibImageWindow *object)
 {
 }
 
 static void
-gdlib_image_window_class_init(GDLIBImageWindowClass *klass)
+gdlib_image_window_class_init(GDlibImageWindowClass *klass)
 {
   GParamSpec *spec;
 
@@ -92,11 +92,11 @@ gdlib_image_window_class_init(GDLIBImageWindowClass *klass)
 /**
  * gdlib_image_window_new:
  *
- * Returns: A newly created #GDLIBImageWindow.
+ * Returns: A newly created #GDlibImageWindow.
  *
  * Since: 1.0.0
  */
-GDLIBImageWindow *
+GDlibImageWindow *
 gdlib_image_window_new(void)
 {
   auto image_window = std::make_shared<dlib::image_window>();
@@ -105,12 +105,12 @@ gdlib_image_window_new(void)
 
 /**
  * gdlib_image_window_clear_overlay:
- * @image_window: A #GDLIBImageWindow.
+ * @image_window: A #GDlibImageWindow.
  *
  * Since: 1.0.0
  */
 void
-gdlib_image_window_clear_overlay(GDLIBImageWindow *image_window)
+gdlib_image_window_clear_overlay(GDlibImageWindow *image_window)
 {
   auto dlib_image_window = gdlib_image_window_get_raw(image_window);
   dlib_image_window->clear_overlay();
@@ -118,14 +118,14 @@ gdlib_image_window_clear_overlay(GDLIBImageWindow *image_window)
 
 /**
  * gdlib_image_window_set_image:
- * @image_window: A #GDLIBImageWindow.
- * @image: A #GDLIBImage.
+ * @image_window: A #GDlibImageWindow.
+ * @image: A #GDlibImage.
  *
  * Since: 1.0.0
  */
 void
-gdlib_image_window_set_image(GDLIBImageWindow *image_window,
-                             GDLIBImage *image)
+gdlib_image_window_set_image(GDlibImageWindow *image_window,
+                             GDlibImage *image)
 {
   auto dlib_image_window = gdlib_image_window_get_raw(image_window);
   auto dlib_image = gdlib_image_get_raw(image);
@@ -134,20 +134,20 @@ gdlib_image_window_set_image(GDLIBImageWindow *image_window,
 
 /**
  * gdlib_image_window_add_overlay:
- * @image_window: A #GDLIBImageWindow.
- * @overlay_lines: (element-type GDLIBOverlayLine):
+ * @image_window: A #GDlibImageWindow.
+ * @overlay_lines: (element-type GDlibOverlayLine):
  *   The overlay lines in the image_window.
  *
  * Since: 1.0.0
  */
 void
-gdlib_image_window_add_overlay(GDLIBImageWindow *image_window,
+gdlib_image_window_add_overlay(GDlibImageWindow *image_window,
                                GList *overlay_lines)
 {
   auto dlib_image_window = gdlib_image_window_get_raw(image_window);
   std::vector<dlib::image_window::overlay_line> dlib_overlay_lines;
   for (GList *node = overlay_lines; node; node = node->next) {
-    GDLIBOverlayLine *overlay_line = GDLIB_OVERLAY_LINE(node->data);
+    GDlibOverlayLine *overlay_line = GDlib_OVERLAY_LINE(node->data);
     dlib_overlay_lines.push_back(*gdlib_overlay_line_get_raw(overlay_line));
   }
   dlib_image_window->add_overlay(dlib_overlay_lines);
@@ -155,12 +155,12 @@ gdlib_image_window_add_overlay(GDLIBImageWindow *image_window,
 
 /**
  * gdlib_image_window_wait_until_closed:
- * @image_window: A #GDLIBImageWindow.
+ * @image_window: A #GDlibImageWindow.
  *
  * Since: 1.0.0
  */
 void
-gdlib_image_window_wait_until_closed(GDLIBImageWindow *image_window)
+gdlib_image_window_wait_until_closed(GDlibImageWindow *image_window)
 {
   auto dlib_image_window = gdlib_image_window_get_raw(image_window);
   dlib_image_window->wait_until_closed();
@@ -168,23 +168,23 @@ gdlib_image_window_wait_until_closed(GDLIBImageWindow *image_window)
 
 /**
  * gdlib_image_window_set_face_chip_details:
- * @image_window: A #GDLIBImageWindow.
- * @image: A #GDLIBImage.
- * @chip_details: (element-type GDLIBChipDetail):
- *   The #GDLIBChipDetail in the full object detections.
+ * @image_window: A #GDlibImageWindow.
+ * @image: A #GDlibImage.
+ * @chip_details: (element-type GDlibChipDetail):
+ *   The #GDlibChipDetail in the full object detections.
  *
  * Since: 1.0.0
  */
 void
-gdlib_image_window_set_face_chip_details(GDLIBImageWindow *image_window,
-                                         GDLIBImage *image,
+gdlib_image_window_set_face_chip_details(GDlibImageWindow *image_window,
+                                         GDlibImage *image,
                                          GList *chip_details)
 {
   auto dlib_image_window = gdlib_image_window_get_raw(image_window);
   auto dlib_image = gdlib_image_get_raw(image);
   std::vector<dlib::chip_details> dlib_chip_details;
   for (GList *node = chip_details; node; node = node->next) {
-    GDLIBChipDetail *chip_detail = GDLIB_CHIP_DETAIL(node->data);
+    GDlibChipDetail *chip_detail = GDlib_CHIP_DETAIL(node->data);
     dlib_chip_details.push_back(*gdlib_chip_detail_get_raw(chip_detail));
   }
   dlib::array<dlib::array2d<dlib::rgb_pixel>> dlib_face_chips;
@@ -194,18 +194,18 @@ gdlib_image_window_set_face_chip_details(GDLIBImageWindow *image_window,
 
 G_END_DECLS
 
-GDLIBImageWindow *
+GDlibImageWindow *
 gdlib_image_window_new_raw(std::shared_ptr<dlib::image_window> *dlib_image_window)
 {
-  auto image_window = g_object_new(GDLIB_TYPE_IMAGE_WINDOW,
+  auto image_window = g_object_new(GDlib_TYPE_IMAGE_WINDOW,
                                    "image_window", dlib_image_window,
                                    NULL);
-  return GDLIB_IMAGE_WINDOW(image_window);
+  return GDlib_IMAGE_WINDOW(image_window);
 }
 
 std::shared_ptr<dlib::image_window>
-gdlib_image_window_get_raw(GDLIBImageWindow *image_window)
+gdlib_image_window_get_raw(GDlibImageWindow *image_window)
 {
-  auto priv = GDLIB_IMAGE_WINDOW_GET_PRIVATE(image_window);
+  auto priv = GDlib_IMAGE_WINDOW_GET_PRIVATE(image_window);
   return priv->image_window;
 }

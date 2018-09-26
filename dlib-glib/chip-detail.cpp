@@ -12,7 +12,7 @@ G_BEGIN_DECLS
  * @title: ChipDetail class
  * @include: dlib-glib/dlib-glib.h
  *
- * #GDLIBChipDetail is a class for each face that
+ * #GDlibChipDetail is a class for each face that
  * are cropped, rotated, upright.
  *
  * Since: 1.0.0
@@ -20,14 +20,14 @@ G_BEGIN_DECLS
 
 typedef struct {
   std::shared_ptr<dlib::chip_details> chip_detail;
-} GDLIBChipDetailPrivate;
+} GDlibChipDetailPrivate;
 
-G_DEFINE_TYPE_WITH_PRIVATE(GDLIBChipDetail, gdlib_chip_detail, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE(GDlibChipDetail, gdlib_chip_detail, G_TYPE_OBJECT)
 
-#define GDLIB_CHIP_DETAIL_GET_PRIVATE(obj)                     \
+#define GDlib_CHIP_DETAIL_GET_PRIVATE(obj)                     \
   (G_TYPE_INSTANCE_GET_PRIVATE((obj),                          \
-                               GDLIB_TYPE_CHIP_DETAIL,         \
-                               GDLIBChipDetailPrivate))
+                               GDlib_TYPE_CHIP_DETAIL,         \
+                               GDlibChipDetailPrivate))
 
 enum {
   PROP_0,
@@ -37,7 +37,7 @@ enum {
 static void
 gdlib_chip_detail_finalize(GObject *object)
 {
-  auto priv = GDLIB_CHIP_DETAIL_GET_PRIVATE(object);
+  auto priv = GDlib_CHIP_DETAIL_GET_PRIVATE(object);
 
   priv->chip_detail = nullptr;
 
@@ -50,7 +50,7 @@ gdlib_chip_detail_set_property(GObject *object,
                                const GValue *value,
                                GParamSpec *pspec)
 {
-  auto priv = GDLIB_CHIP_DETAIL_GET_PRIVATE(object);
+  auto priv = GDlib_CHIP_DETAIL_GET_PRIVATE(object);
 
   switch (prop_id) {
   case PROP_CHIP_DETAIL:
@@ -64,12 +64,12 @@ gdlib_chip_detail_set_property(GObject *object,
 }
 
 static void
-gdlib_chip_detail_init(GDLIBChipDetail *object)
+gdlib_chip_detail_init(GDlibChipDetail *object)
 {
 }
 
 static void
-gdlib_chip_detail_class_init(GDLIBChipDetailClass *klass)
+gdlib_chip_detail_class_init(GDlibChipDetailClass *klass)
 {
   GParamSpec *spec;
 
@@ -89,11 +89,11 @@ gdlib_chip_detail_class_init(GDLIBChipDetailClass *klass)
 /**
  * gdlib_chip_detail_new:
  *
- * Returns: A newly created #GDLIBChipDetail.
+ * Returns: A newly created #GDlibChipDetail.
  *
  * Since: 1.0.0
  */
-GDLIBChipDetail *
+GDlibChipDetail *
 gdlib_chip_detail_new(void)
 {
   auto chip_detail = std::make_shared<dlib::chip_details>();
@@ -102,10 +102,10 @@ gdlib_chip_detail_new(void)
 
 /**
  * gdlib_chip_detail_get_face_chip_details:
- * @full_object_detections: (element-type GDLIBFullObjectDetection):
+ * @full_object_detections: (element-type GDlibFullObjectDetection):
  *   The full_object_detections.
  *
- * Returns: (element-type GDLIBChipDetail) (transfer full):
+ * Returns: (element-type GDlibChipDetail) (transfer full):
  *   The face chip details in the full object detections.
  *
  * Since: 1.0.0
@@ -115,7 +115,7 @@ gdlib_chip_detail_get_face_chip_details(GList *full_object_detections)
 {
   std::vector<dlib::full_object_detection> dlib_full_object_detections;
   for (GList *node = full_object_detections; node; node = node->next) {
-    GDLIBFullObjectDetection *full_object_detection = GDLIB_FULL_OBJECT_DETECTION(node->data);
+    GDlibFullObjectDetection *full_object_detection = GDlib_FULL_OBJECT_DETECTION(node->data);
     dlib_full_object_detections.push_back(*gdlib_full_object_detection_get_raw(full_object_detection));
   }
   auto dlib_chip_details = dlib::get_face_chip_details(dlib_full_object_detections);
@@ -124,7 +124,7 @@ gdlib_chip_detail_get_face_chip_details(GList *full_object_detections)
   for (gsize i = 0; i < size; ++i) {
     auto dlib_chip_detail
       = std::make_shared<dlib::chip_details>(dlib_chip_details[i]);
-    GDLIBChipDetail *chip_detail = gdlib_chip_detail_new_raw(&dlib_chip_detail);
+    GDlibChipDetail *chip_detail = gdlib_chip_detail_new_raw(&dlib_chip_detail);
     chip_details = g_list_prepend(chip_details, chip_detail);
   }
 
@@ -133,18 +133,18 @@ gdlib_chip_detail_get_face_chip_details(GList *full_object_detections)
 
 G_END_DECLS
 
-GDLIBChipDetail *
+GDlibChipDetail *
 gdlib_chip_detail_new_raw(std::shared_ptr<dlib::chip_details> *dlib_chip_detail)
 {
-  auto chip_detail = g_object_new(GDLIB_TYPE_CHIP_DETAIL,
+  auto chip_detail = g_object_new(GDlib_TYPE_CHIP_DETAIL,
                                   "chip_detail", dlib_chip_detail,
                                   NULL);
-  return GDLIB_CHIP_DETAIL(chip_detail);
+  return GDlib_CHIP_DETAIL(chip_detail);
 }
 
 std::shared_ptr<dlib::chip_details>
-gdlib_chip_detail_get_raw(GDLIBChipDetail *chip_detail)
+gdlib_chip_detail_get_raw(GDlibChipDetail *chip_detail)
 {
-  auto priv = GDLIB_CHIP_DETAIL_GET_PRIVATE(chip_detail);
+  auto priv = GDlib_CHIP_DETAIL_GET_PRIVATE(chip_detail);
   return priv->chip_detail;
 }

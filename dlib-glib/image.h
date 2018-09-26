@@ -7,30 +7,30 @@
 
 G_BEGIN_DECLS
 
-#define GDLIB_TYPE_IMAGE (gdlib_image_get_type())
-G_DECLARE_DERIVABLE_TYPE(GDLIBImage,
+#define GDlib_TYPE_IMAGE (gdlib_image_get_type())
+G_DECLARE_DERIVABLE_TYPE(GDlibImage,
                          gdlib_image,
-                         GDLIB,
+                         GDlib,
                          IMAGE,
                          GObject)
 
-struct _GDLIBImageClass
+struct _GDlibImageClass
 {
   GObjectClass parent_class;
 };
 
-GDLIBImage *gdlib_image_new(const gchar *filename);
-GDLIBImage *gdlib_image_new_empty(void);
-void gdlib_image_save_jpeg(GDLIBImage *image,
+GDlibImage *gdlib_image_new(const gchar *filename);
+GDlibImage *gdlib_image_new_empty(void);
+void gdlib_image_save_jpeg(GDlibImage *image,
                            const gchar *filename);
-void gdlib_image_draw_rectangle(GDLIBImage *image,
-                                GDLIBRectangle *rectangle,
+void gdlib_image_draw_rectangle(GDlibImage *image,
+                                GDlibRectangle *rectangle,
                                 gdouble red,
                                 gdouble green,
                                 gdouble blue);
-GDLIBImage *gdlib_image_gaussian_blur(GDLIBImage *image,
-                                      GDLIBImage *blurred_image);
-GDLIBImage *gdlib_image_extract_image_chip(GDLIBImage *image,
-                                           GDLIBChipDetail *chip_detail);
+GDlibImage *gdlib_image_gaussian_blur(GDlibImage *image,
+                                      GDlibImage *blurred_image);
+GDlibImage *gdlib_image_extract_image_chip(GDlibImage *image,
+                                           GDlibChipDetail *chip_detail);
 
 G_END_DECLS

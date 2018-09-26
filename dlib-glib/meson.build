@@ -44,9 +44,9 @@ libdlib_glib_dependency = declare_dependency(link_with: libdlib_glib,
 
 gnome.generate_gir(libdlib_glib,
                    sources: sources + headers,
-                   namespace: 'DLIB',
+                   namespace: 'Dlib',
                    nsversion: api_version,
-                   identifier_prefix: 'GDLIB',
+                   identifier_prefix: 'GDlib',
                    symbol_prefix: 'gdlib',
                    export_packages: 'dlib-glib',
                    includes: [

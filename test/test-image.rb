@@ -3,12 +3,12 @@ class TestImage < Test::Unit::TestCase
 
   def test_new
     assert_nothing_raised do
-      DLIB::Image.new(fixture_path("sample.jpg").to_s)
+      Dlib::Image.new(fixture_path("sample.jpg").to_s)
     end
   end
 
   def test_save_jpeg
-    image = DLIB::Image.new(fixture_path("sample.jpg").to_s)
+    image = Dlib::Image.new(fixture_path("sample.jpg").to_s)
     jpeg = Tempfile.new(["dlib-glib-save-jpeg", ".jpeg"])
     image.save_jpeg(jpeg.path)
   end

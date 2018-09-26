@@ -15,21 +15,21 @@ G_BEGIN_DECLS
  * @title: ShapePredictor class
  * @include: dlib-glib/dlib-glib.h
  *
- * #GDLIBShapePredictor is a class for shape_predictor.
+ * #GDlibShapePredictor is a class for shape_predictor.
  *
  * Since: 1.0.0
  */
 
 typedef struct {
   std::shared_ptr<dlib::shape_predictor> shape_predictor;
-} GDLIBShapePredictorPrivate;
+} GDlibShapePredictorPrivate;
 
-G_DEFINE_TYPE_WITH_PRIVATE(GDLIBShapePredictor, gdlib_shape_predictor, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE(GDlibShapePredictor, gdlib_shape_predictor, G_TYPE_OBJECT)
 
-#define GDLIB_SHAPE_PREDICTOR_GET_PRIVATE(obj)                     \
+#define GDlib_SHAPE_PREDICTOR_GET_PRIVATE(obj)                     \
   (G_TYPE_INSTANCE_GET_PRIVATE((obj),                              \
-                               GDLIB_TYPE_SHAPE_PREDICTOR,         \
-                               GDLIBShapePredictorPrivate))
+                               GDlib_TYPE_SHAPE_PREDICTOR,         \
+                               GDlibShapePredictorPrivate))
 
 enum {
   PROP_0,
@@ -39,7 +39,7 @@ enum {
 static void
 gdlib_shape_predictor_finalize(GObject *object)
 {
-  auto priv = GDLIB_SHAPE_PREDICTOR_GET_PRIVATE(object);
+  auto priv = GDlib_SHAPE_PREDICTOR_GET_PRIVATE(object);
 
   priv->shape_predictor = nullptr;
 
@@ -52,7 +52,7 @@ gdlib_shape_predictor_set_property(GObject *object,
                                    const GValue *value,
                                    GParamSpec *pspec)
 {
-  auto priv = GDLIB_SHAPE_PREDICTOR_GET_PRIVATE(object);
+  auto priv = GDlib_SHAPE_PREDICTOR_GET_PRIVATE(object);
 
   switch (prop_id) {
   case PROP_SHAPE_PREDICTOR:
@@ -66,12 +66,12 @@ gdlib_shape_predictor_set_property(GObject *object,
 }
 
 static void
-gdlib_shape_predictor_init(GDLIBShapePredictor *object)
+gdlib_shape_predictor_init(GDlibShapePredictor *object)
 {
 }
 
 static void
-gdlib_shape_predictor_class_init(GDLIBShapePredictorClass *klass)
+gdlib_shape_predictor_class_init(GDlibShapePredictorClass *klass)
 {
   GParamSpec *spec;
 
@@ -92,11 +92,11 @@ gdlib_shape_predictor_class_init(GDLIBShapePredictorClass *klass)
  * gdlib_shape_predictor_new:
  * @predictor: The trained shape predictor model.
  *
- * Returns: A newly read #GDLIBShapePredictor.
+ * Returns: A newly read #GDlibShapePredictor.
  *
  * Since: 1.0.0
  */
-GDLIBShapePredictor *
+GDlibShapePredictor *
 gdlib_shape_predictor_new(const gchar *predictor)
 {
   auto shape_predictor = std::make_shared<dlib::shape_predictor>();
@@ -106,19 +106,19 @@ gdlib_shape_predictor_new(const gchar *predictor)
 
 /**
  * gdlib_shape_predictor_detect:
- * @shape_predictor: A #GDLIBShapePredictor.
- * @image: A #GDLIBImage.
- * @rectangle: A #GDLIBRectangle.
+ * @shape_predictor: A #GDlibShapePredictor.
+ * @image: A #GDlibImage.
+ * @rectangle: A #GDlibRectangle.
  *
  * Returns: (transfer full):
  *     The full object detection of each face detected.
  *
  * Since: 1.0.0
  */
-GDLIBFullObjectDetection *
-gdlib_shape_predictor_detect(GDLIBShapePredictor *shape_predictor,
-                             GDLIBImage *image,
-                             GDLIBRectangle *rectangle)
+GDlibFullObjectDetection *
+gdlib_shape_predictor_detect(GDlibShapePredictor *shape_predictor,
+                             GDlibImage *image,
+                             GDlibRectangle *rectangle)
 {
   auto dlib_shape_predictor
     = *gdlib_shape_predictor_get_raw(shape_predictor);
@@ -133,18 +133,18 @@ gdlib_shape_predictor_detect(GDLIBShapePredictor *shape_predictor,
 
 G_END_DECLS
 
-GDLIBShapePredictor *
+GDlibShapePredictor *
 gdlib_shape_predictor_new_raw(std::shared_ptr<dlib::shape_predictor> *dlib_shape_predictor)
 {
-  auto shape_predictor = g_object_new(GDLIB_TYPE_SHAPE_PREDICTOR,
+  auto shape_predictor = g_object_new(GDlib_TYPE_SHAPE_PREDICTOR,
                                       "shape_predictor", dlib_shape_predictor,
                                       NULL);
-  return GDLIB_SHAPE_PREDICTOR(shape_predictor);
+  return GDlib_SHAPE_PREDICTOR(shape_predictor);
 }
 
 std::shared_ptr<dlib::shape_predictor>
-gdlib_shape_predictor_get_raw(GDLIBShapePredictor *shape_predictor)
+gdlib_shape_predictor_get_raw(GDlibShapePredictor *shape_predictor)
 {
-  auto priv = GDLIB_SHAPE_PREDICTOR_GET_PRIVATE(shape_predictor);
+  auto priv = GDlib_SHAPE_PREDICTOR_GET_PRIVATE(shape_predictor);
   return priv->shape_predictor;
 }

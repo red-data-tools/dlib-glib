@@ -6,20 +6,20 @@
 
 G_BEGIN_DECLS
 
-#define GDLIB_TYPE_DETECTOR (gdlib_detector_get_type())
-G_DECLARE_DERIVABLE_TYPE(GDLIBDetector,
+#define GDlib_TYPE_DETECTOR (gdlib_detector_get_type())
+G_DECLARE_DERIVABLE_TYPE(GDlibDetector,
                          gdlib_detector,
-                         GDLIB,
+                         GDlib,
                          DETECTOR,
                          GObject)
 
-struct _GDLIBDetectorClass
+struct _GDlibDetectorClass
 {
   GObjectClass parent_class;
 };
 
-GDLIBDetector *gdlib_detector_new(void);
-GList *gdlib_detector_detect(GDLIBDetector *detector,
-                             GDLIBImage *image);
+GDlibDetector *gdlib_detector_new(void);
+GList *gdlib_detector_detect(GDlibDetector *detector,
+                             GDlibImage *image);
 
 G_END_DECLS

@@ -8,7 +8,7 @@ test_dir = base_dir + "test"
 
 require "gi"
 
-DLIB = GI.load("DLIB")
+Dlib = GI.load("Dlib")
 
 require "tempfile"
 require_relative "helper/fixture"

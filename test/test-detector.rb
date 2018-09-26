@@ -3,13 +3,13 @@ class TestDetector < Test::Unit::TestCase
 
   def test_new
     assert_nothing_raised do
-      DLIB::Detector.new
+      Dlib::Detector.new
     end
   end
 
   def test_detect
-    image = DLIB::Image.new(fixture_path("sample.jpg").to_s)
-    detector = DLIB::Detector.new
+    image = Dlib::Image.new(fixture_path("sample.jpg").to_s)
+    detector = Dlib::Detector.new
     rectangles = detector.detect(image)
     assert_equal(rectangles.size, 1)
   end

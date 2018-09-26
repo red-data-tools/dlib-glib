@@ -12,21 +12,21 @@ G_BEGIN_DECLS
  * @title: Image class
  * @include: dlib-glib/dlib-glib.h
  *
- * #GDLIBImage is a class for image.
+ * #GDlibImage is a class for image.
  *
  * Since: 1.0.0
  */
 
 typedef struct {
   std::shared_ptr<dlib::array2d<dlib::rgb_pixel>> image;
-} GDLIBImagePrivate;
+} GDlibImagePrivate;
 
-G_DEFINE_TYPE_WITH_PRIVATE(GDLIBImage, gdlib_image, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE(GDlibImage, gdlib_image, G_TYPE_OBJECT)
 
-#define GDLIB_IMAGE_GET_PRIVATE(obj)                     \
+#define GDlib_IMAGE_GET_PRIVATE(obj)                     \
   (G_TYPE_INSTANCE_GET_PRIVATE((obj),                    \
-                               GDLIB_TYPE_IMAGE,         \
-                               GDLIBImagePrivate))
+                               GDlib_TYPE_IMAGE,         \
+                               GDlibImagePrivate))
 
 enum {
   PROP_0,
@@ -36,7 +36,7 @@ enum {
 static void
 gdlib_image_finalize(GObject *object)
 {
-  auto priv = GDLIB_IMAGE_GET_PRIVATE(object);
+  auto priv = GDlib_IMAGE_GET_PRIVATE(object);
 
   priv->image = nullptr;
 
@@ -49,7 +49,7 @@ gdlib_image_set_property(GObject *object,
                          const GValue *value,
                          GParamSpec *pspec)
 {
-  auto priv = GDLIB_IMAGE_GET_PRIVATE(object);
+  auto priv = GDlib_IMAGE_GET_PRIVATE(object);
 
   switch (prop_id) {
   case PROP_IMAGE:
@@ -63,12 +63,12 @@ gdlib_image_set_property(GObject *object,
 }
 
 static void
-gdlib_image_init(GDLIBImage *object)
+gdlib_image_init(GDlibImage *object)
 {
 }
 
 static void
-gdlib_image_class_init(GDLIBImageClass *klass)
+gdlib_image_class_init(GDlibImageClass *klass)
 {
   GParamSpec *spec;
 
@@ -89,11 +89,11 @@ gdlib_image_class_init(GDLIBImageClass *klass)
  * gdlib_image_new:
  * @filename: The filename to be read.
  *
- * Returns: A newly created #GDLIBImage.
+ * Returns: A newly created #GDlibImage.
  *
  * Since: 1.0.0
  */
-GDLIBImage *
+GDlibImage *
 gdlib_image_new(const gchar *filename)
 {
   auto image = std::make_shared<dlib::array2d<dlib::rgb_pixel>>();
@@ -104,11 +104,11 @@ gdlib_image_new(const gchar *filename)
 /**
  * gdlib_image_new_empty:
  *
- * Returns: A newly created empty #GDLIBImage.
+ * Returns: A newly created empty #GDlibImage.
  *
  * Since: 1.0.0
  */
-GDLIBImage *
+GDlibImage *
 gdlib_image_new_empty(void)
 {
   auto image = std::make_shared<dlib::array2d<dlib::rgb_pixel>>();
@@ -117,13 +117,13 @@ gdlib_image_new_empty(void)
 
 /**
  * gdlib_image_save_jpeg:
- * @image: A #GDLIBImage.
+ * @image: A #GDlibImage.
  * @filename: The filename to be read.
  *
  * Since: 1.0.0
  */
 void
-gdlib_image_save_jpeg(GDLIBImage *image,
+gdlib_image_save_jpeg(GDlibImage *image,
                       const gchar *filename)
 {
   auto dlib_image = gdlib_image_get_raw(image);
@@ -132,8 +132,8 @@ gdlib_image_save_jpeg(GDLIBImage *image,
 
 /**
  * gdlib_image_draw_rectangle:
- * @image: A #GDLIBImage.
- * @rectangle: A #GDLIBRectangle.
+ * @image: A #GDlibImage.
+ * @rectangle: A #GDlibRectangle.
  * @red: A red pixel value.
  * @green: A green pixel value.
  * @blue: A blue pixel value.
@@ -141,8 +141,8 @@ gdlib_image_save_jpeg(GDLIBImage *image,
  * Since: 1.0.0
  */
 void
-gdlib_image_draw_rectangle(GDLIBImage *image,
-                           GDLIBRectangle *rectangle,
+gdlib_image_draw_rectangle(GDlibImage *image,
+                           GDlibRectangle *rectangle,
                            gdouble red,
                            gdouble green,
                            gdouble blue)
@@ -155,17 +155,17 @@ gdlib_image_draw_rectangle(GDLIBImage *image,
 
 /**
  * gdlib_image_gaussian_blur:
- * @image: A #GDLIBImage.
- * @blurred_image: A #GDLIBImage.
+ * @image: A #GDlibImage.
+ * @blurred_image: A #GDlibImage.
  *
  * Returns: (transfer full): The image blurred
  *   using Gaussian function.
  *
  * Since: 1.0.0
  */
-GDLIBImage *
-gdlib_image_gaussian_blur(GDLIBImage *image,
-                          GDLIBImage *blurred_image)
+GDlibImage *
+gdlib_image_gaussian_blur(GDlibImage *image,
+                          GDlibImage *blurred_image)
 {
   auto dlib_image = gdlib_image_get_raw(image);
   auto dlib_blurred_image = gdlib_image_get_raw(blurred_image);
@@ -175,17 +175,17 @@ gdlib_image_gaussian_blur(GDLIBImage *image,
 
 /**
  * gdlib_image_extract_image_chip:
- * @image: A #GDLIBImage.
- * @chip_detail: A #GDLIBChipDetail.
+ * @image: A #GDlibImage.
+ * @chip_detail: A #GDlibChipDetail.
  *
  * Returns: (transfer full):
  *     The image of each face that are cropped.
  *
  * Since: 1.0.0
  */
-GDLIBImage *
-gdlib_image_extract_image_chip(GDLIBImage *image,
-                               GDLIBChipDetail *chip_detail)
+GDlibImage *
+gdlib_image_extract_image_chip(GDlibImage *image,
+                               GDlibChipDetail *chip_detail)
 {
   auto dlib_image = gdlib_image_get_raw(image);
   auto dlib_chip_detail = gdlib_chip_detail_get_raw(chip_detail);
@@ -196,18 +196,18 @@ gdlib_image_extract_image_chip(GDLIBImage *image,
 
 G_END_DECLS
 
-GDLIBImage *
+GDlibImage *
 gdlib_image_new_raw(std::shared_ptr<dlib::array2d<dlib::rgb_pixel>> *dlib_image)
 {
-  auto image = g_object_new(GDLIB_TYPE_IMAGE,
+  auto image = g_object_new(GDlib_TYPE_IMAGE,
                             "image", dlib_image,
                             NULL);
-  return GDLIB_IMAGE(image);
+  return GDlib_IMAGE(image);
 }
 
 std::shared_ptr<dlib::array2d<dlib::rgb_pixel>>
-gdlib_image_get_raw(GDLIBImage *image)
+gdlib_image_get_raw(GDlibImage *image)
 {
-  auto priv = GDLIB_IMAGE_GET_PRIVATE(image);
+  auto priv = GDlib_IMAGE_GET_PRIVATE(image);
   return priv->image;
 }

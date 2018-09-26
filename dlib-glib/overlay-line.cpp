@@ -12,21 +12,21 @@ G_BEGIN_DECLS
  * @title: OverlayLine class
  * @include: dlib-glib/dlib-glib.h
  *
- * #GDLIBOverlayLine is a class for overlay line.
+ * #GDlibOverlayLine is a class for overlay line.
  *
  * Since: 1.0.0
  */
 
 typedef struct {
   std::shared_ptr<dlib::image_window::overlay_line> overlay_line;
-} GDLIBOverlayLinePrivate;
+} GDlibOverlayLinePrivate;
 
-G_DEFINE_TYPE_WITH_PRIVATE(GDLIBOverlayLine, gdlib_overlay_line, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE(GDlibOverlayLine, gdlib_overlay_line, G_TYPE_OBJECT)
 
-#define GDLIB_OVERLAY_LINE_GET_PRIVATE(obj)                     \
+#define GDlib_OVERLAY_LINE_GET_PRIVATE(obj)                     \
   (G_TYPE_INSTANCE_GET_PRIVATE((obj),                           \
-                               GDLIB_TYPE_OVERLAY_LINE,         \
-                               GDLIBOverlayLinePrivate))
+                               GDlib_TYPE_OVERLAY_LINE,         \
+                               GDlibOverlayLinePrivate))
 
 enum {
   PROP_0,
@@ -36,7 +36,7 @@ enum {
 static void
 gdlib_overlay_line_finalize(GObject *object)
 {
-  auto priv = GDLIB_OVERLAY_LINE_GET_PRIVATE(object);
+  auto priv = GDlib_OVERLAY_LINE_GET_PRIVATE(object);
 
   priv->overlay_line = nullptr;
 
@@ -49,7 +49,7 @@ gdlib_overlay_line_set_property(GObject *object,
                                 const GValue *value,
                                 GParamSpec *pspec)
 {
-  auto priv = GDLIB_OVERLAY_LINE_GET_PRIVATE(object);
+  auto priv = GDlib_OVERLAY_LINE_GET_PRIVATE(object);
 
   switch (prop_id) {
   case PROP_OVERLAY_LINE:
@@ -63,12 +63,12 @@ gdlib_overlay_line_set_property(GObject *object,
 }
 
 static void
-gdlib_overlay_line_init(GDLIBOverlayLine *object)
+gdlib_overlay_line_init(GDlibOverlayLine *object)
 {
 }
 
 static void
-gdlib_overlay_line_class_init(GDLIBOverlayLineClass *klass)
+gdlib_overlay_line_class_init(GDlibOverlayLineClass *klass)
 {
   GParamSpec *spec;
 
@@ -88,11 +88,11 @@ gdlib_overlay_line_class_init(GDLIBOverlayLineClass *klass)
 /**
  * gdlib_overlay_line_new:
  *
- * Returns: A newly created #GDLIBOverlayLine.
+ * Returns: A newly created #GDlibOverlayLine.
  *
  * Since: 1.0.0
  */
-GDLIBOverlayLine *
+GDlibOverlayLine *
 gdlib_overlay_line_new(void)
 {
   auto dlib_overlay_line
@@ -102,10 +102,10 @@ gdlib_overlay_line_new(void)
 
 /**
  * gdlib_overlay_line_render_face_detections:
- * @full_object_detections: (element-type GDLIBFullObjectDetection):
+ * @full_object_detections: (element-type GDlibFullObjectDetection):
  *    The full object detections.
  *
- * Returns: (element-type GDLIBOverlayLine) (transfer full):
+ * Returns: (element-type GDlibOverlayLine) (transfer full):
  *   The overlay lines rendering face detections with the full object detections.
  *
  * Since: 1.0.0
@@ -115,7 +115,7 @@ gdlib_overlay_line_render_face_detections(GList *full_object_detections)
 {
   std::vector<dlib::full_object_detection> dlib_full_object_detections;
   for (GList *node = full_object_detections; node; node = node->next) {
-    GDLIBFullObjectDetection *full_object_detection = GDLIB_FULL_OBJECT_DETECTION(node->data);
+    GDlibFullObjectDetection *full_object_detection = GDlib_FULL_OBJECT_DETECTION(node->data);
     dlib_full_object_detections.push_back(*gdlib_full_object_detection_get_raw(full_object_detection));
   }
   auto dlib_overlay_lines = dlib::render_face_detections(dlib_full_object_detections);
@@ -124,7 +124,7 @@ gdlib_overlay_line_render_face_detections(GList *full_object_detections)
   for (gsize i = 0; i < size; ++i) {
     auto dlib_overlay_line
       = std::make_shared<dlib::image_window::overlay_line>(dlib_overlay_lines[i]);
-    GDLIBOverlayLine *overlay_line = gdlib_overlay_line_new_raw(&dlib_overlay_line);
+    GDlibOverlayLine *overlay_line = gdlib_overlay_line_new_raw(&dlib_overlay_line);
     overlay_lines = g_list_prepend(overlay_lines, overlay_line);
   }
 
@@ -133,18 +133,18 @@ gdlib_overlay_line_render_face_detections(GList *full_object_detections)
 
 G_END_DECLS
 
-GDLIBOverlayLine *
+GDlibOverlayLine *
 gdlib_overlay_line_new_raw(std::shared_ptr<dlib::image_window::overlay_line> *dlib_overlay_line)
 {
-  auto overlay_line = g_object_new(GDLIB_TYPE_OVERLAY_LINE,
+  auto overlay_line = g_object_new(GDlib_TYPE_OVERLAY_LINE,
                                    "overlay_line", dlib_overlay_line,
                                    NULL);
-  return GDLIB_OVERLAY_LINE(overlay_line);
+  return GDlib_OVERLAY_LINE(overlay_line);
 }
 
 std::shared_ptr<dlib::image_window::overlay_line>
-gdlib_overlay_line_get_raw(GDLIBOverlayLine *overlay_line)
+gdlib_overlay_line_get_raw(GDlibOverlayLine *overlay_line)
 {
-  auto priv = GDLIB_OVERLAY_LINE_GET_PRIVATE(overlay_line);
+  auto priv = GDlib_OVERLAY_LINE_GET_PRIVATE(overlay_line);
   return priv->overlay_line;
 }

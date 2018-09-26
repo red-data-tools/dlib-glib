@@ -8,21 +8,21 @@
 
 G_BEGIN_DECLS
 
-#define GDLIB_TYPE_SHAPE_PREDICTOR (gdlib_shape_predictor_get_type())
-G_DECLARE_DERIVABLE_TYPE(GDLIBShapePredictor,
+#define GDlib_TYPE_SHAPE_PREDICTOR (gdlib_shape_predictor_get_type())
+G_DECLARE_DERIVABLE_TYPE(GDlibShapePredictor,
                          gdlib_shape_predictor,
-                         GDLIB,
+                         GDlib,
                          SHAPE_PREDICTOR,
                          GObject)
 
-struct _GDLIBShapePredictorClass
+struct _GDlibShapePredictorClass
 {
   GObjectClass parent_class;
 };
 
-GDLIBShapePredictor *gdlib_shape_predictor_new(const gchar *predictor);
-GDLIBFullObjectDetection *gdlib_shape_predictor_detect(GDLIBShapePredictor *shape_predictor,
-                                                       GDLIBImage *image,
-                                                       GDLIBRectangle *rectangle);
+GDlibShapePredictor *gdlib_shape_predictor_new(const gchar *predictor);
+GDlibFullObjectDetection *gdlib_shape_predictor_detect(GDlibShapePredictor *shape_predictor,
+                                                       GDlibImage *image,
+                                                       GDlibRectangle *rectangle);
 
 G_END_DECLS

@@ -13,21 +13,21 @@ G_BEGIN_DECLS
  * @title: Detector class
  * @include: dlib-glib/dlib-glib.h
  *
- * #GDLIBDetector is a class for face detector.
+ * #GDlibDetector is a class for face detector.
  *
  * Since: 1.0.0
  */
 
 typedef struct {
   dlib::frontal_face_detector *detector;
-} GDLIBDetectorPrivate;
+} GDlibDetectorPrivate;
 
-G_DEFINE_TYPE_WITH_PRIVATE(GDLIBDetector, gdlib_detector, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE(GDlibDetector, gdlib_detector, G_TYPE_OBJECT)
 
-#define GDLIB_DETECTOR_GET_PRIVATE(obj)                     \
+#define GDlib_DETECTOR_GET_PRIVATE(obj)                     \
   (G_TYPE_INSTANCE_GET_PRIVATE((obj),                       \
-                               GDLIB_TYPE_DETECTOR,         \
-                               GDLIBDetectorPrivate))
+                               GDlib_TYPE_DETECTOR,         \
+                               GDlibDetectorPrivate))
 
 enum {
   PROP_0,
@@ -37,7 +37,7 @@ enum {
 static void
 gdlib_detector_finalize(GObject *object)
 {
-  auto priv = GDLIB_DETECTOR_GET_PRIVATE(object);
+  auto priv = GDlib_DETECTOR_GET_PRIVATE(object);
 
   priv->detector = nullptr;
 
@@ -50,7 +50,7 @@ gdlib_detector_set_property(GObject *object,
                             const GValue *value,
                             GParamSpec *pspec)
 {
-  auto priv = GDLIB_DETECTOR_GET_PRIVATE(object);
+  auto priv = GDlib_DETECTOR_GET_PRIVATE(object);
 
   switch (prop_id) {
   case PROP_DETECTOR:
@@ -64,12 +64,12 @@ gdlib_detector_set_property(GObject *object,
 }
 
 static void
-gdlib_detector_init(GDLIBDetector *object)
+gdlib_detector_init(GDlibDetector *object)
 {
 }
 
 static void
-gdlib_detector_class_init(GDLIBDetectorClass *klass)
+gdlib_detector_class_init(GDlibDetectorClass *klass)
 {
   GParamSpec *spec;
 
@@ -89,11 +89,11 @@ gdlib_detector_class_init(GDLIBDetectorClass *klass)
 /**
  * gdlib_detector_new:
  *
- * Returns: A newly read #GDLIBDetector.
+ * Returns: A newly read #GDlibDetector.
  *
  * Since: 1.0.0
  */
-GDLIBDetector *
+GDlibDetector *
 gdlib_detector_new(void)
 {
   auto detector = dlib::get_frontal_face_detector();
@@ -102,17 +102,17 @@ gdlib_detector_new(void)
 
 /**
  * gdlib_detector_detect:
- * @detector: A #GDLIBDetector.
- * @image: A #GDLIBImage.
+ * @detector: A #GDlibDetector.
+ * @image: A #GDlibImage.
  *
- * Returns: (element-type GDLIBRectangle) (transfer full):
+ * Returns: (element-type GDlibRectangle) (transfer full):
  *   The rectangles of the face detections is made using the now classic HOG feature combined with a linear classifier.
  *
  * Since: 1.0.0
  */
 GList *
-gdlib_detector_detect(GDLIBDetector *detector,
-                      GDLIBImage *image)
+gdlib_detector_detect(GDlibDetector *detector,
+                      GDlibImage *image)
 {
   auto dlib_image = gdlib_image_get_raw(image);
   auto dlib_detector = dlib::get_frontal_face_detector();
@@ -122,7 +122,7 @@ gdlib_detector_detect(GDLIBDetector *detector,
   GList *rectangles = NULL;
   for (gsize i = 0; i < size; ++i) {
     auto dlib_rectangle = std::make_shared<dlib::rectangle>(dlib_rectangles[i]);
-    GDLIBRectangle *rectangle = gdlib_rectangle_new_raw(&dlib_rectangle);
+    GDlibRectangle *rectangle = gdlib_rectangle_new_raw(&dlib_rectangle);
     rectangles = g_list_prepend(rectangles, rectangle);
   }
 
@@ -131,18 +131,18 @@ gdlib_detector_detect(GDLIBDetector *detector,
 
 G_END_DECLS
 
-GDLIBDetector *
+GDlibDetector *
 gdlib_detector_new_raw(dlib::frontal_face_detector *dlib_detector)
 {
-  auto detector = g_object_new(GDLIB_TYPE_DETECTOR,
+  auto detector = g_object_new(GDlib_TYPE_DETECTOR,
                                "detector", dlib_detector,
                                NULL);
-  return GDLIB_DETECTOR(detector);
+  return GDlib_DETECTOR(detector);
 }
 
 dlib::frontal_face_detector *
-gdlib_detector_get_raw(GDLIBDetector *detector)
+gdlib_detector_get_raw(GDlibDetector *detector)
 {
-  auto priv = GDLIB_DETECTOR_GET_PRIVATE(detector);
+  auto priv = GDlib_DETECTOR_GET_PRIVATE(detector);
   return priv->detector;
 }
