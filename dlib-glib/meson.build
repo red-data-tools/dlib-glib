@@ -4,7 +4,7 @@ sources = files(
   'rectangle.cpp',
   'shape-predictor.cpp',
   'full-object-detection.cpp',
-  'image_window.cpp',
+  'image-window.cpp',
   'overlay-line.cpp',
   'chip-detail.cpp'
 )
@@ -15,7 +15,7 @@ headers = files(
   'rectangle.h',
   'shape-predictor.h',
   'full-object-detection.h',
-  'image_window.h',
+  'image-window.h',
   'overlay-line.h',
   'chip-detail.h'
 )
