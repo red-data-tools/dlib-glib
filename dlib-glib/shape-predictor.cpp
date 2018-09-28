@@ -120,14 +120,14 @@ gdlib_shape_predictor_detect(GDlibShapePredictor *shape_predictor,
                              GDlibImage *image,
                              GDlibRectangle *rectangle)
 {
-  auto dlib_shape_predictor
-    = *gdlib_shape_predictor_get_raw(shape_predictor);
+  auto dlib_shape_predictor =
+    *gdlib_shape_predictor_get_raw(shape_predictor);
   auto dlib_image = gdlib_image_get_raw(image);
   auto dlib_rectangle = gdlib_rectangle_get_raw(rectangle);
-  auto full_object_detection
-    = dlib_shape_predictor(*dlib_image, *dlib_rectangle);
-  auto dlib_full_object_detection
-    = std::make_shared<dlib::full_object_detection>(full_object_detection);
+  auto full_object_detection =
+    dlib_shape_predictor(*dlib_image, *dlib_rectangle);
+  auto dlib_full_object_detection =
+    std::make_shared<dlib::full_object_detection>(full_object_detection);
   return gdlib_full_object_detection_new_raw(&dlib_full_object_detection);
 }
 

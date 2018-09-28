@@ -95,8 +95,8 @@ gdlib_overlay_line_class_init(GDlibOverlayLineClass *klass)
 GDlibOverlayLine *
 gdlib_overlay_line_new(void)
 {
-  auto dlib_overlay_line
-    = std::make_shared<dlib::image_window::overlay_line>();
+  auto dlib_overlay_line =
+    std::make_shared<dlib::image_window::overlay_line>();
   return gdlib_overlay_line_new_raw(&dlib_overlay_line);
 }
 
@@ -122,8 +122,8 @@ gdlib_overlay_line_render_face_detections(GList *full_object_detections)
   auto size = dlib_overlay_lines.size();
   GList *overlay_lines = NULL;
   for (gsize i = 0; i < size; ++i) {
-    auto dlib_overlay_line
-      = std::make_shared<dlib::image_window::overlay_line>(dlib_overlay_lines[i]);
+    auto dlib_overlay_line =
+      std::make_shared<dlib::image_window::overlay_line>(dlib_overlay_lines[i]);
     GDlibOverlayLine *overlay_line = gdlib_overlay_line_new_raw(&dlib_overlay_line);
     overlay_lines = g_list_prepend(overlay_lines, overlay_line);
   }

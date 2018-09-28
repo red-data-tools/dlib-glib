@@ -99,8 +99,8 @@ GDlibFullObjectDetection *
 gdlib_full_object_detection_new(GDlibRectangle *rectangle)
 {
   auto dlib_rectangle = gdlib_rectangle_get_raw(rectangle);
-  auto dlib_full_object_detection
-    = std::make_shared<dlib::full_object_detection>(*dlib_rectangle);
+  auto dlib_full_object_detection =
+    std::make_shared<dlib::full_object_detection>(*dlib_rectangle);
   return gdlib_full_object_detection_new_raw(&dlib_full_object_detection);
 }
 
@@ -116,10 +116,10 @@ gdlib_full_object_detection_new(GDlibRectangle *rectangle)
 GDlibRectangle *
 gdlib_full_object_detection_rectangle(GDlibFullObjectDetection *full_object_detection)
 {
-  auto dlib_full_object_detection
-    = gdlib_full_object_detection_get_raw(full_object_detection);
-  auto dlib_rectangle
-    = std::make_shared<dlib::rectangle>(dlib_full_object_detection->get_rect());
+  auto dlib_full_object_detection =
+    gdlib_full_object_detection_get_raw(full_object_detection);
+  auto dlib_rectangle =
+    std::make_shared<dlib::rectangle>(dlib_full_object_detection->get_rect());
   return gdlib_rectangle_new_raw(&dlib_rectangle);
 }
 
@@ -134,8 +134,8 @@ gdlib_full_object_detection_rectangle(GDlibFullObjectDetection *full_object_dete
 gulong
 gdlib_full_object_detection_get_n_parts(GDlibFullObjectDetection *full_object_detection)
 {
-  auto dlib_full_object_detection
-    = gdlib_full_object_detection_get_raw(full_object_detection);
+  auto dlib_full_object_detection =
+    gdlib_full_object_detection_get_raw(full_object_detection);
   return dlib_full_object_detection->num_parts();
 }
 

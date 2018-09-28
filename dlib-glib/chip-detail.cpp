@@ -122,8 +122,8 @@ gdlib_chip_detail_get_face_chip_details(GList *full_object_detections)
   auto size = dlib_chip_details.size();
   GList *chip_details = NULL;
   for (gsize i = 0; i < size; ++i) {
-    auto dlib_chip_detail
-      = std::make_shared<dlib::chip_details>(dlib_chip_details[i]);
+    auto dlib_chip_detail =
+      std::make_shared<dlib::chip_details>(dlib_chip_details[i]);
     GDlibChipDetail *chip_detail = gdlib_chip_detail_new_raw(&dlib_chip_detail);
     chip_details = g_list_prepend(chip_details, chip_detail);
   }

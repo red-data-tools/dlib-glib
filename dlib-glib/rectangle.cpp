@@ -94,9 +94,13 @@ gdlib_rectangle_class_init(GDlibRectangleClass *klass)
  * Since: 1.0.0
  */
 GDlibRectangle *
-gdlib_rectangle_new(glong left, glong top, glong right, glong bottom)
+gdlib_rectangle_new(glong left,
+                    glong top,
+                    glong right,
+                    glong bottom)
 {
-  auto rectangle = std::make_shared<dlib::rectangle>(left, top, right, bottom);
+  auto rectangle =
+    std::make_shared<dlib::rectangle>(left, top, right, bottom);
   return gdlib_rectangle_new_raw(&rectangle);
 }
 
@@ -182,7 +186,8 @@ gdlib_rectangle_get_bottom(GDlibRectangle *rectangle)
  * Since: 1.0.0
  */
 void
-gdlib_rectangle_set_left(GDlibRectangle *rectangle, glong left)
+gdlib_rectangle_set_left(GDlibRectangle *rectangle,
+                         glong left)
 {
   auto dlib_rectangle = gdlib_rectangle_get_raw(rectangle);
   dlib_rectangle->set_left(left);
@@ -196,7 +201,8 @@ gdlib_rectangle_set_left(GDlibRectangle *rectangle, glong left)
  * Since: 1.0.0
  */
 void
-gdlib_rectangle_set_top(GDlibRectangle *rectangle, glong top)
+gdlib_rectangle_set_top(GDlibRectangle *rectangle,
+                        glong top)
 {
   auto dlib_rectangle = gdlib_rectangle_get_raw(rectangle);
   dlib_rectangle->set_top(top);
@@ -210,7 +216,8 @@ gdlib_rectangle_set_top(GDlibRectangle *rectangle, glong top)
  * Since: 1.0.0
  */
 void
-gdlib_rectangle_set_right(GDlibRectangle *rectangle, glong right)
+gdlib_rectangle_set_right(GDlibRectangle *rectangle,
+                          glong right)
 {
   auto dlib_rectangle = gdlib_rectangle_get_raw(rectangle);
   dlib_rectangle->set_right(right);
@@ -224,7 +231,8 @@ gdlib_rectangle_set_right(GDlibRectangle *rectangle, glong right)
  * Since: 1.0.0
  */
 void
-gdlib_rectangle_set_bottom(GDlibRectangle *rectangle, glong bottom)
+gdlib_rectangle_set_bottom(GDlibRectangle *rectangle,
+                           glong bottom)
 {
   auto dlib_rectangle = gdlib_rectangle_get_raw(rectangle);
   dlib_rectangle->set_bottom(bottom);
