@@ -89,7 +89,7 @@ gdlib_detector_class_init(GDlibDetectorClass *klass)
 /**
  * gdlib_detector_new:
  *
- * Returns: A newly read #GDlibDetector.
+ * Returns: A newly created #GDlibDetector.
  *
  * Since: 1.0.0
  */
@@ -107,7 +107,8 @@ gdlib_detector_new(void)
  * @image: A #GDlibImage.
  *
  * Returns: (element-type GDlibRectangle) (transfer full):
- *   The rectangles of the face detections is made using the now classic HOG feature combined with a linear classifier.
+ *   The rectangles of the face detections is made using the now classic
+ *   HOG feature combined with a linear classifier.
  *
  * Since: 1.0.0
  */
