@@ -19,7 +19,7 @@ G_BEGIN_DECLS
  */
 
 typedef struct {
-  dlib::frontal_face_detector *detector;
+  std::shared_ptr<dlib::frontal_face_detector> detector;
 } GDlibDetectorPrivate;
 
 G_DEFINE_TYPE_WITH_PRIVATE(GDlibDetector, gdlib_detector, G_TYPE_OBJECT)
@@ -55,7 +55,7 @@ gdlib_detector_set_property(GObject *object,
   switch (prop_id) {
   case PROP_DETECTOR:
     priv->detector =
-      static_cast<dlib::frontal_face_detector *>(g_value_get_pointer(value));
+      *static_cast<std::shared_ptr<dlib::frontal_face_detector> *>(g_value_get_pointer(value));
     break;
   default:
     G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
@@ -80,7 +80,7 @@ gdlib_detector_class_init(GDlibDetectorClass *klass)
 
   spec = g_param_spec_pointer("detector",
                               "Detector",
-                              "The raw dlib::frontal_face_detector *",
+                              "The raw std::shared_ptr<dlib::frontal_face_detector> *",
                               static_cast<GParamFlags>(G_PARAM_WRITABLE |
                                                        G_PARAM_CONSTRUCT_ONLY));
   g_object_class_install_property(gobject_class, PROP_DETECTOR, spec);
@@ -96,8 +96,9 @@ gdlib_detector_class_init(GDlibDetectorClass *klass)
 GDlibDetector *
 gdlib_detector_new(void)
 {
-  auto detector = dlib::get_frontal_face_detector();
-  return gdlib_detector_new_raw(&detector);
+  auto dlib_detector =
+    std::make_shared<dlib::frontal_face_detector>(dlib::get_frontal_face_detector());
+  return gdlib_detector_new_raw(&dlib_detector);
 }
 
 /**
@@ -132,7 +133,7 @@ gdlib_detector_detect(GDlibDetector *detector,
 G_END_DECLS
 
 GDlibDetector *
-gdlib_detector_new_raw(dlib::frontal_face_detector *dlib_detector)
+gdlib_detector_new_raw(std::shared_ptr<dlib::frontal_face_detector> *dlib_detector)
 {
   auto detector = g_object_new(GDlib_TYPE_DETECTOR,
                                "detector", dlib_detector,
@@ -140,7 +141,7 @@ gdlib_detector_new_raw(dlib::frontal_face_detector *dlib_detector)
   return GDlib_DETECTOR(detector);
 }
 
-dlib::frontal_face_detector *
+std::shared_ptr<dlib::frontal_face_detector>
 gdlib_detector_get_raw(GDlibDetector *detector)
 {
   auto priv = GDlib_DETECTOR_GET_PRIVATE(detector);
