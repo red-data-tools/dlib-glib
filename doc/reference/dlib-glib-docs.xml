@@ -16,7 +16,7 @@
   <chapter id="data">
     <title>Data</title>
     <xi:include href="xml/image.xml"/>
-    <xi:include href="xml/detector.xml"/>
+    <xi:include href="xml/frontal-face-detector.xml"/>
     <xi:include href="xml/full-object-detection.xml"/>
     <xi:include href="xml/overlay-line.xml"/>
     <xi:include href="xml/rectangle.xml"/>

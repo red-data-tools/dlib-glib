@@ -1,5 +1,5 @@
 sources = files(
-  'detector.cpp',
+  'frontal-face-detector.cpp',
   'image.cpp',
   'rectangle.cpp',
   'shape-predictor.cpp',
@@ -10,7 +10,7 @@ sources = files(
 )
 
 headers = files(
-  'detector.h',
+  'frontal-face-detector.h',
   'image.h',
   'rectangle.h',
   'shape-predictor.h',
