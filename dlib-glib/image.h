@@ -20,7 +20,6 @@ struct _GDlibImageClass
 };
 
 GDlibImage *gdlib_image_new(const gchar *filename);
-GDlibImage *gdlib_image_new_empty(void);
 void gdlib_image_save_jpeg(GDlibImage *image,
                            const gchar *filename);
 void gdlib_image_draw_rectangle(GDlibImage *image,
@@ -28,8 +27,7 @@ void gdlib_image_draw_rectangle(GDlibImage *image,
                                 gdouble red,
                                 gdouble green,
                                 gdouble blue);
-GDlibImage *gdlib_image_gaussian_blur(GDlibImage *image,
-                                      GDlibImage *blurred_image);
+GDlibImage *gdlib_image_gaussian_blur(GDlibImage *image);
 GDlibImage *gdlib_image_extract_image_chip(GDlibImage *image,
                                            GDlibChipDetail *chip_detail);
 

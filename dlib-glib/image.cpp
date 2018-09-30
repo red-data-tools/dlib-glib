@@ -102,20 +102,6 @@ gdlib_image_new(const gchar *filename)
 }
 
 /**
- * gdlib_image_new_empty:
- *
- * Returns: A newly created empty #GDlibImage.
- *
- * Since: 1.0.0
- */
-GDlibImage *
-gdlib_image_new_empty(void)
-{
-  auto image = std::make_shared<dlib::array2d<dlib::rgb_pixel>>();
-  return gdlib_image_new_raw(&image);
-}
-
-/**
  * gdlib_image_save_jpeg:
  * @image: A #GDlibImage.
  * @filename: The filename to be read.
@@ -156,7 +142,6 @@ gdlib_image_draw_rectangle(GDlibImage *image,
 /**
  * gdlib_image_gaussian_blur:
  * @image: A #GDlibImage.
- * @blurred_image: A #GDlibImage.
  *
  * Returns: (transfer full): The image blurred
  *   using Gaussian function.
@@ -164,11 +149,10 @@ gdlib_image_draw_rectangle(GDlibImage *image,
  * Since: 1.0.0
  */
 GDlibImage *
-gdlib_image_gaussian_blur(GDlibImage *image,
-                          GDlibImage *blurred_image)
+gdlib_image_gaussian_blur(GDlibImage *image)
 {
   auto dlib_image = gdlib_image_get_raw(image);
-  auto dlib_blurred_image = gdlib_image_get_raw(blurred_image);
+  auto dlib_blurred_image = std::make_shared<dlib::array2d<dlib::rgb_pixel>>();
   dlib::gaussian_blur(*dlib_image, *dlib_blurred_image);
   return gdlib_image_new_raw(&dlib_blurred_image);
 }
