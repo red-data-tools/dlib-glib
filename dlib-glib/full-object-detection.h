@@ -19,7 +19,7 @@ struct _GDlibFullObjectDetectionClass
 };
 
 GDlibFullObjectDetection *gdlib_full_object_detection_new(GDlibRectangle *rectangle);
-GDlibRectangle *gdlib_full_object_detection_rectangle(GDlibFullObjectDetection *full_object_detection);
+GDlibRectangle *gdlib_full_object_detection_get_rectangle(GDlibFullObjectDetection *full_object_detection);
 gulong gdlib_full_object_detection_get_n_parts(GDlibFullObjectDetection *full_object_detection);
 
 G_END_DECLS

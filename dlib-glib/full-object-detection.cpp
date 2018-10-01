@@ -105,7 +105,7 @@ gdlib_full_object_detection_new(GDlibRectangle *rectangle)
 }
 
 /**
- * gdlib_full_object_detection_rectangle:
+ * gdlib_full_object_detection_get_rectangle:
  * @full_object_detection: A #GDlibFullObjectDetection.
  *
  * Returns: (transfer full):
@@ -114,7 +114,7 @@ gdlib_full_object_detection_new(GDlibRectangle *rectangle)
  * Since: 1.0.0
  */
 GDlibRectangle *
-gdlib_full_object_detection_rectangle(GDlibFullObjectDetection *full_object_detection)
+gdlib_full_object_detection_get_rectangle(GDlibFullObjectDetection *full_object_detection)
 {
   auto dlib_full_object_detection =
     gdlib_full_object_detection_get_raw(full_object_detection);
