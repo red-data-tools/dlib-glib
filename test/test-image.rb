@@ -1,15 +1,21 @@
 class TestImage < Test::Unit::TestCase
   include Helper::Fixture
 
-  def test_new
-    assert_nothing_raised do
-      Dlib::Image.new(fixture_path("sample.jpg").to_s)
-    end
+  def setup
+    @image = Dlib::Image.new(fixture_path("sample.jpg").to_s)
   end
 
   def test_save_jpeg
-    image = Dlib::Image.new(fixture_path("sample.jpg").to_s)
     jpeg = Tempfile.new(["dlib-glib-save-jpeg", ".jpeg"])
-    image.save_jpeg(jpeg.path)
+    assert_nothing_raised do
+      @image.save_jpeg(jpeg.path)
+    end
+  end
+
+  def test_draw_rectangle
+    assert_nothing_raised do
+      @image.draw_rectangle(Dlib::Rectangle.new(187, 138, 633, 584),
+                                                0, 0, 255)
+    end
   end
 end
