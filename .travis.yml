@@ -1,0 +1,13 @@
+sudo: required
+
+services:
+  - docker
+
+install:
+  - docker build -t red-data-tools/dlib-glib .
+
+script:
+  - docker run
+      --interactive
+      --tty
+      red-data-tools/dlib-glib
