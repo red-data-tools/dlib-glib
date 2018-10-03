@@ -178,6 +178,34 @@ gdlib_image_extract_image_chip(GDlibImage *image,
   return gdlib_image_new_raw(&dlib_face_chip);
 }
 
+/**
+ * gdlib_image_find_candidate_object_locations:
+ * @image: A #GDlibImage.
+ * @min_size: The size of the output segments.
+ * @max_merging_iterations: The number of iterations has some effect on the number of output rectangles.
+ * Returns: (element-type GDlibRectangle) (transfer full):
+ *   The rectangles of locations of candidate objects.
+ */
+GList *
+gdlib_image_find_candidate_object_locations(GDlibImage *image,
+                                            gint min_size,
+                                            gint max_merging_iterations)
+{
+  auto dlib_image = gdlib_image_get_raw(image);
+  std::vector<dlib::rectangle> dlib_rectangles;
+  dlib::find_candidate_object_locations(*dlib_image, dlib_rectangles, dlib::linspace(20, 200, 3), min_size, max_merging_iterations);
+  auto size = dlib_rectangles.size();
+  GList *rectangles = NULL;
+  for (gsize i = 0; i < size; ++i) {
+    auto dlib_rectangle =
+      std::make_shared<dlib::rectangle>(dlib_rectangles[i]);
+    auto rectangle = gdlib_rectangle_new_raw(&dlib_rectangle);
+    rectangles = g_list_prepend(rectangles, rectangle);
+  }
+
+  return g_list_reverse(rectangles);
+}
+
 G_END_DECLS
 
 GDlibImage *

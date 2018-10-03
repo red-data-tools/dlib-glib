@@ -30,5 +30,8 @@ void gdlib_image_draw_rectangle(GDlibImage *image,
 GDlibImage *gdlib_image_gaussian_blur(GDlibImage *image);
 GDlibImage *gdlib_image_extract_image_chip(GDlibImage *image,
                                            GDlibChipDetail *chip_detail);
+GList *gdlib_image_find_candidate_object_locations(GDlibImage *image,
+                                                   gint min_size,
+                                                   gint max_merging_iterations);
 
 G_END_DECLS
