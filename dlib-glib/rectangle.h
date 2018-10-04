@@ -33,5 +33,6 @@ void gdlib_rectangle_set_right(GDlibRectangle *rectangle,
                                glong right);
 void gdlib_rectangle_set_bottom(GDlibRectangle *rectangle,
                                 glong bottom);
+gboolean gdlib_rectangle_is_empty(GDlibRectangle *rectangle);
 
 G_END_DECLS

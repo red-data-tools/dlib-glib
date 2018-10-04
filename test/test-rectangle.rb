@@ -35,4 +35,11 @@ class TestRectangle < Test::Unit::TestCase
                    rectangle.bottom
                  ])
   end
+
+  def test_empry
+    rectangle = Dlib::Rectangle.new
+    assert do
+      rectangle.empty?
+    end
+  end
 end

@@ -238,6 +238,21 @@ gdlib_rectangle_set_bottom(GDlibRectangle *rectangle,
   dlib_rectangle->set_bottom(bottom);
 }
 
+/**
+ * gdlib_rectangle_is_empty:
+ * @rectangle: A #GDlibRectangle.
+ *
+ * Returns: %TRUE if the rectangle is empty, %FALSE otherwise.
+ *
+ * Since: 1.0.0
+ */
+gboolean
+gdlib_rectangle_is_empty(GDlibRectangle *rectangle)
+{
+  auto dlib_rectangle = gdlib_rectangle_get_raw(rectangle);
+  return dlib_rectangle->is_empty();
+}
+
 G_END_DECLS
 
 GDlibRectangle *
