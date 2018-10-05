@@ -20,7 +20,8 @@ class TestImage < Test::Unit::TestCase
   end
 
   def test_find_candidate_object_locations
-    rectangles = @image.find_candidate_object_locations(20, 50)
-    assert_equal(rectangles.size, 42456)
+    rectangles1 = @image.find_candidate_object_locations(0, 0)
+    rectangles2 = @image.find_candidate_object_locations(20, 50)
+    assert_not_equal(rectangles1.size, rectangles2.size)
   end
 end
