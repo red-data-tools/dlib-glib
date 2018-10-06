@@ -1,12 +1,12 @@
 entities_conf = configuration_data()
 entities_conf.set('PACKAGE', meson.project_name())
 entities_conf.set('PACKAGE_BUGREPORT',
-                  'https://github.com/shiro615/dlib-glib/issues')
+                  'https://github.com/red-data-tools/dlib-glib/issues')
 entities_conf.set('PACKAGE_NAME', meson.project_name())
 entities_conf.set('PACKAGE_STRING',
                   ' '.join([meson.project_name(), meson.project_version()]))
 entities_conf.set('PACKAGE_URL',
-                  'https://github.com/shiro615/dlib-glib/')
+                  'https://github.com/red-data-tools/dlib-glib/')
 entities_conf.set('PACKAGE_VERSION', meson.project_version())
 configure_file(input: 'entities.xml.in',
                output: 'entities.xml',
