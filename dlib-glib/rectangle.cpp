@@ -1,5 +1,3 @@
-#include <dlib/geometry/rectangle.h>
-
 #include <dlib-glib/rectangle.hpp>
 
 G_BEGIN_DECLS

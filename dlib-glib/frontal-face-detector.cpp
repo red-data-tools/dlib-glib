@@ -1,7 +1,3 @@
-#include <memory>
-
-#include <dlib/image_processing/frontal_face_detector.h>
-
 #include <dlib-glib/frontal-face-detector.hpp>
 #include <dlib-glib/image.hpp>
 #include <dlib-glib/rectangle.hpp>

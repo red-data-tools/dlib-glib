@@ -1,7 +1,3 @@
-#include <memory>
-
-#include <dlib/image_transforms/interpolation.h>
-
 #include <dlib-glib/chip-detail.hpp>
 #include <dlib-glib/full-object-detection.hpp>
 

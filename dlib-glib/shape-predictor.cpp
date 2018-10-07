@@ -1,8 +1,3 @@
-#include <memory>
-
-#include <dlib/image_processing/shape_predictor.h>
-#include <dlib/image_processing/full_object_detection.h>
-
 #include <dlib-glib/full-object-detection.hpp>
 #include <dlib-glib/shape-predictor.hpp>
 #include <dlib-glib/image.hpp>

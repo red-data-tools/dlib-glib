@@ -1,9 +1,3 @@
-#include <memory>
-
-#include <dlib/gui_widgets.h>
-#include <dlib/image_transforms/interpolation.h>
-#include <dlib/image_transforms/draw.h>
-
 #include <dlib-glib/image-window.hpp>
 #include <dlib-glib/image.hpp>
 #include <dlib-glib/overlay-line.hpp>

@@ -1,6 +1,3 @@
-#include <dlib/image_io.h>
-#include <dlib/image_transforms.h>
-
 #include <dlib-glib/image.hpp>
 #include <dlib-glib/rectangle.hpp>
 #include <dlib-glib/chip-detail.hpp>

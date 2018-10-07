@@ -2,6 +2,8 @@
 
 #include <memory>
 
+#include <dlib/image_transforms/interpolation.h>
+
 #include <dlib-glib/chip-detail.h>
 
 GDlibChipDetail *gdlib_chip_detail_new_raw(std::shared_ptr<dlib::chip_details> *dlib_chip_detail);
