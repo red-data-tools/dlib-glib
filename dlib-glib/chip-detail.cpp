@@ -22,7 +22,7 @@ G_DEFINE_TYPE_WITH_PRIVATE(GDlibChipDetail, gdlib_chip_detail, G_TYPE_OBJECT)
 
 #define GDlib_CHIP_DETAIL_GET_PRIVATE(obj)                     \
   (G_TYPE_INSTANCE_GET_PRIVATE((obj),                          \
-                               GDlib_TYPE_CHIP_DETAIL,         \
+                               GDLIB_TYPE_CHIP_DETAIL,         \
                                GDlibChipDetailPrivate))
 
 enum {
@@ -132,7 +132,7 @@ G_END_DECLS
 GDlibChipDetail *
 gdlib_chip_detail_new_raw(std::shared_ptr<dlib::chip_details> *dlib_chip_detail)
 {
-  auto chip_detail = g_object_new(GDlib_TYPE_CHIP_DETAIL,
+  auto chip_detail = g_object_new(GDLIB_TYPE_CHIP_DETAIL,
                                   "chip_detail", dlib_chip_detail,
                                   NULL);
   return GDlib_CHIP_DETAIL(chip_detail);

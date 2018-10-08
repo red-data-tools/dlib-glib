@@ -6,7 +6,7 @@
 
 G_BEGIN_DECLS
 
-#define GDlib_TYPE_FRONTAL_FACE_DETECTOR (gdlib_frontal_face_detector_get_type())
+#define GDLIB_TYPE_FRONTAL_FACE_DETECTOR (gdlib_frontal_face_detector_get_type())
 G_DECLARE_DERIVABLE_TYPE(GDlibFrontalFaceDetector,
                          gdlib_frontal_face_detector,
                          GDlib,

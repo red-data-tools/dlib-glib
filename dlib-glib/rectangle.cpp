@@ -20,7 +20,7 @@ G_DEFINE_TYPE_WITH_PRIVATE(GDlibRectangle, gdlib_rectangle, G_TYPE_OBJECT)
 
 #define GDlib_RECTANGLE_GET_PRIVATE(obj)                     \
   (G_TYPE_INSTANCE_GET_PRIVATE((obj),                        \
-                               GDlib_TYPE_RECTANGLE,         \
+                               GDLIB_TYPE_RECTANGLE,         \
                                GDlibRectanglePrivate))
 
 enum {
@@ -256,7 +256,7 @@ G_END_DECLS
 GDlibRectangle *
 gdlib_rectangle_new_raw(std::shared_ptr<dlib::rectangle> *dlib_rectangle)
 {
-  auto rectangle = g_object_new(GDlib_TYPE_RECTANGLE,
+  auto rectangle = g_object_new(GDLIB_TYPE_RECTANGLE,
                                 "rectangle", dlib_rectangle,
                                 NULL);
   return GDlib_RECTANGLE(rectangle);

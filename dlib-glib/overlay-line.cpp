@@ -21,7 +21,7 @@ G_DEFINE_TYPE_WITH_PRIVATE(GDlibOverlayLine, gdlib_overlay_line, G_TYPE_OBJECT)
 
 #define GDlib_OVERLAY_LINE_GET_PRIVATE(obj)                     \
   (G_TYPE_INSTANCE_GET_PRIVATE((obj),                           \
-                               GDlib_TYPE_OVERLAY_LINE,         \
+                               GDLIB_TYPE_OVERLAY_LINE,         \
                                GDlibOverlayLinePrivate))
 
 enum {
@@ -132,7 +132,7 @@ G_END_DECLS
 GDlibOverlayLine *
 gdlib_overlay_line_new_raw(std::shared_ptr<dlib::image_window::overlay_line> *dlib_overlay_line)
 {
-  auto overlay_line = g_object_new(GDlib_TYPE_OVERLAY_LINE,
+  auto overlay_line = g_object_new(GDLIB_TYPE_OVERLAY_LINE,
                                    "overlay_line", dlib_overlay_line,
                                    NULL);
   return GDlib_OVERLAY_LINE(overlay_line);

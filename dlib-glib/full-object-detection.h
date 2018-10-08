@@ -6,7 +6,7 @@
 
 G_BEGIN_DECLS
 
-#define GDlib_TYPE_FULL_OBJECT_DETECTION (gdlib_full_object_detection_get_type())
+#define GDLIB_TYPE_FULL_OBJECT_DETECTION (gdlib_full_object_detection_get_type())
 G_DECLARE_DERIVABLE_TYPE(GDlibFullObjectDetection,
                          gdlib_full_object_detection,
                          GDlib,

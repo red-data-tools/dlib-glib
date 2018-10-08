@@ -22,7 +22,7 @@ G_DEFINE_TYPE_WITH_PRIVATE(GDlibFrontalFaceDetector, gdlib_frontal_face_detector
 
 #define GDlib_FRONTAL_FACE_DETECTOR_GET_PRIVATE(obj)                     \
   (G_TYPE_INSTANCE_GET_PRIVATE((obj),                                    \
-                               GDlib_TYPE_FRONTAL_FACE_DETECTOR,         \
+                               GDLIB_TYPE_FRONTAL_FACE_DETECTOR,         \
                                GDlibFrontalFaceDetectorPrivate))
 
 enum {
@@ -132,7 +132,7 @@ G_END_DECLS
 GDlibFrontalFaceDetector *
 gdlib_frontal_face_detector_new_raw(std::shared_ptr<dlib::frontal_face_detector> *dlib_frontal_face_detector)
 {
-  auto frontal_face_detector = g_object_new(GDlib_TYPE_FRONTAL_FACE_DETECTOR,
+  auto frontal_face_detector = g_object_new(GDLIB_TYPE_FRONTAL_FACE_DETECTOR,
                                             "frontal_face_detector", dlib_frontal_face_detector,
                                             NULL);
   return GDlib_FRONTAL_FACE_DETECTOR(frontal_face_detector);

@@ -8,7 +8,7 @@
 
 G_BEGIN_DECLS
 
-#define GDlib_TYPE_SHAPE_PREDICTOR (gdlib_shape_predictor_get_type())
+#define GDLIB_TYPE_SHAPE_PREDICTOR (gdlib_shape_predictor_get_type())
 G_DECLARE_DERIVABLE_TYPE(GDlibShapePredictor,
                          gdlib_shape_predictor,
                          GDlib,

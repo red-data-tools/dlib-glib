@@ -4,7 +4,7 @@
 
 G_BEGIN_DECLS
 
-#define GDlib_TYPE_RECTANGLE (gdlib_rectangle_get_type())
+#define GDLIB_TYPE_RECTANGLE (gdlib_rectangle_get_type())
 G_DECLARE_DERIVABLE_TYPE(GDlibRectangle,
                          gdlib_rectangle,
                          GDlib,

@@ -23,7 +23,7 @@ G_DEFINE_TYPE_WITH_PRIVATE(GDlibShapePredictor, gdlib_shape_predictor, G_TYPE_OB
 
 #define GDlib_SHAPE_PREDICTOR_GET_PRIVATE(obj)                     \
   (G_TYPE_INSTANCE_GET_PRIVATE((obj),                              \
-                               GDlib_TYPE_SHAPE_PREDICTOR,         \
+                               GDLIB_TYPE_SHAPE_PREDICTOR,         \
                                GDlibShapePredictorPrivate))
 
 enum {
@@ -131,7 +131,7 @@ G_END_DECLS
 GDlibShapePredictor *
 gdlib_shape_predictor_new_raw(std::shared_ptr<dlib::shape_predictor> *dlib_shape_predictor)
 {
-  auto shape_predictor = g_object_new(GDlib_TYPE_SHAPE_PREDICTOR,
+  auto shape_predictor = g_object_new(GDLIB_TYPE_SHAPE_PREDICTOR,
                                       "shape_predictor", dlib_shape_predictor,
                                       NULL);
   return GDlib_SHAPE_PREDICTOR(shape_predictor);

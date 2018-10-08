@@ -23,7 +23,7 @@ G_DEFINE_TYPE_WITH_PRIVATE(GDlibImageWindow, gdlib_image_window, G_TYPE_OBJECT)
 
 #define GDlib_IMAGE_WINDOW_GET_PRIVATE(obj)                     \
   (G_TYPE_INSTANCE_GET_PRIVATE((obj),                           \
-                               GDlib_TYPE_IMAGE_WINDOW,         \
+                               GDLIB_TYPE_IMAGE_WINDOW,         \
                                GDlibImageWindowPrivate))
 
 enum {
@@ -191,7 +191,7 @@ G_END_DECLS
 GDlibImageWindow *
 gdlib_image_window_new_raw(std::shared_ptr<dlib::image_window> *dlib_image_window)
 {
-  auto image_window = g_object_new(GDlib_TYPE_IMAGE_WINDOW,
+  auto image_window = g_object_new(GDLIB_TYPE_IMAGE_WINDOW,
                                    "image_window", dlib_image_window,
                                    NULL);
   return GDlib_IMAGE_WINDOW(image_window);

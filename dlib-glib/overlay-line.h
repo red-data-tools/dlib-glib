@@ -6,7 +6,7 @@
 
 G_BEGIN_DECLS
 
-#define GDlib_TYPE_OVERLAY_LINE (gdlib_overlay_line_get_type())
+#define GDLIB_TYPE_OVERLAY_LINE (gdlib_overlay_line_get_type())
 G_DECLARE_DERIVABLE_TYPE(GDlibOverlayLine,
                          gdlib_overlay_line,
                          GDlib,

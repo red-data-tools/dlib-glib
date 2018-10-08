@@ -7,7 +7,7 @@
 
 G_BEGIN_DECLS
 
-#define GDlib_TYPE_IMAGE (gdlib_image_get_type())
+#define GDLIB_TYPE_IMAGE (gdlib_image_get_type())
 G_DECLARE_DERIVABLE_TYPE(GDlibImage,
                          gdlib_image,
                          GDlib,

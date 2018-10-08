@@ -22,7 +22,7 @@ G_DEFINE_TYPE_WITH_PRIVATE(GDlibFullObjectDetection, gdlib_full_object_detection
 
 #define GDlib_FULL_OBJECT_DETECTION_GET_PRIVATE(obj)                     \
   (G_TYPE_INSTANCE_GET_PRIVATE((obj),                                    \
-                               GDlib_TYPE_FULL_OBJECT_DETECTION,         \
+                               GDLIB_TYPE_FULL_OBJECT_DETECTION,         \
                                GDlibFullObjectDetectionPrivate))
 
 enum {
@@ -139,7 +139,7 @@ G_END_DECLS
 GDlibFullObjectDetection *
 gdlib_full_object_detection_new_raw(std::shared_ptr<dlib::full_object_detection> *dlib_full_object_detection)
 {
-  auto full_object_detection = g_object_new(GDlib_TYPE_FULL_OBJECT_DETECTION,
+  auto full_object_detection = g_object_new(GDLIB_TYPE_FULL_OBJECT_DETECTION,
                                             "full_object_detection", dlib_full_object_detection,
                                             NULL);
   return GDlib_FULL_OBJECT_DETECTION(full_object_detection);

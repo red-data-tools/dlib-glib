@@ -6,7 +6,7 @@
 
 G_BEGIN_DECLS
 
-#define GDlib_TYPE_IMAGE_WINDOW (gdlib_image_window_get_type())
+#define GDLIB_TYPE_IMAGE_WINDOW (gdlib_image_window_get_type())
 G_DECLARE_DERIVABLE_TYPE(GDlibImageWindow,
                          gdlib_image_window,
                          GDlib,

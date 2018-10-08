@@ -22,7 +22,7 @@ G_DEFINE_TYPE_WITH_PRIVATE(GDlibImage, gdlib_image, G_TYPE_OBJECT)
 
 #define GDlib_IMAGE_GET_PRIVATE(obj)                     \
   (G_TYPE_INSTANCE_GET_PRIVATE((obj),                    \
-                               GDlib_TYPE_IMAGE,         \
+                               GDLIB_TYPE_IMAGE,         \
                                GDlibImagePrivate))
 
 enum {
@@ -208,7 +208,7 @@ G_END_DECLS
 GDlibImage *
 gdlib_image_new_raw(std::shared_ptr<dlib::array2d<dlib::rgb_pixel>> *dlib_image)
 {
-  auto image = g_object_new(GDlib_TYPE_IMAGE,
+  auto image = g_object_new(GDLIB_TYPE_IMAGE,
                             "image", dlib_image,
                             NULL);
   return GDlib_IMAGE(image);
