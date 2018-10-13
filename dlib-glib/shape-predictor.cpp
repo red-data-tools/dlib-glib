@@ -106,7 +106,7 @@ gdlib_shape_predictor_new(const gchar *predictor)
  * @rectangle: A #GDlibRectangle.
  *
  * Returns: (transfer full):
- *     The full object detection of each face detected.
+ *   The full object detection of each face detected.
  *
  * Since: 1.0.0
  */

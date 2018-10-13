@@ -160,7 +160,7 @@ gdlib_image_gaussian_blur(GDlibImage *image)
  * @chip_detail: A #GDlibChipDetail.
  *
  * Returns: (transfer full):
- *     The image of each face that are cropped.
+ *   The image of each face that are cropped.
  *
  * Since: 1.0.0
  */
@@ -179,7 +179,8 @@ gdlib_image_extract_image_chip(GDlibImage *image,
  * gdlib_image_find_candidate_object_locations:
  * @image: A #GDlibImage.
  * @min_size: The size of the output segments.
- * @max_merging_iterations: The number of iterations has some effect on the number of output rectangles.
+ * @max_merging_iterations: The number of iterations has
+ *   some effect on the number of output rectangles.
  * Returns: (element-type GDlibRectangle) (transfer full):
  *   The rectangles of locations of candidate objects.
  */

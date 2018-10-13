@@ -99,7 +99,7 @@ gdlib_overlay_line_new(void)
 /**
  * gdlib_overlay_line_render_face_detections:
  * @full_object_detections: (element-type GDlibFullObjectDetection):
- *    The full object detections.
+ *   The full object detections.
  *
  * Returns: (element-type GDlibOverlayLine) (transfer full):
  *   The overlay lines rendering face detections with the full object detections.
