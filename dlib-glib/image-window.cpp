@@ -10,7 +10,8 @@ G_BEGIN_DECLS
  * @title: ImageWindow class
  * @include: dlib-glib/dlib-glib.h
  *
- * #GDlibImageWindow is a image_window class.
+ * #GDlibImageWindow is a class for GUI window capable of showing images
+ * on the screen.
  *
  * Since: 1.0.0
  */
@@ -130,7 +131,7 @@ gdlib_image_window_set_image(GDlibImageWindow *image_window,
  * gdlib_image_window_add_overlay:
  * @image_window: A #GDlibImageWindow.
  * @overlay_lines: (element-type GDlibOverlayLine):
- *   The overlay lines in the image_window.
+ *   The lines added to image_window.
  *
  * Since: 1.0.0
  */

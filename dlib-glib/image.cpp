@@ -181,8 +181,11 @@ gdlib_image_extract_image_chip(GDlibImage *image,
  * @min_size: The size of the output segments.
  * @max_merging_iterations: The number of iterations has
  *   some effect on the number of output rectangles.
+ *
  * Returns: (element-type GDlibRectangle) (transfer full):
  *   The rectangles of locations of candidate objects.
+ *
+ * Since: 1.0.0
  */
 GList *
 gdlib_image_find_candidate_object_locations(GDlibImage *image,

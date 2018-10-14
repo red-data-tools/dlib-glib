@@ -10,7 +10,7 @@ G_BEGIN_DECLS
  * @title: ShapePredictor class
  * @include: dlib-glib/dlib-glib.h
  *
- * #GDlibShapePredictor is a class for shape_predictor.
+ * #GDlibShapePredictor is a class for shape prediction.
  *
  * Since: 1.0.0
  */
