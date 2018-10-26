@@ -251,6 +251,30 @@ gdlib_rectangle_is_empty(GDlibRectangle *rectangle)
   return dlib_rectangle->is_empty();
 }
 
+/**
+ * gdlib_rectangle_intersect:
+ * @rectangle: A #GDlibRectangle.
+ * @other_rectangle: A #GDlibRectangle to be intersected.
+ *
+ * Returns: (transfer full): The rectangle that represents the intersection
+ *   of two rectangles.
+ *
+ * Since: 1.0.0
+ */
+GDlibRectangle *
+gdlib_rectangle_intersect(GDlibRectangle *rectangle,
+                          GDlibRectangle *other_rectangle)
+{
+  auto dlib_rectangle = gdlib_rectangle_get_raw(rectangle);
+  auto dlib_other_rectangle =
+    gdlib_rectangle_get_raw(other_rectangle);
+  auto dlib_intersected_rectangle_raw =
+    dlib_rectangle->intersect(*dlib_other_rectangle);
+  auto dlib_intersected_rectangle =
+    std::make_shared<dlib::rectangle>(dlib_intersected_rectangle_raw);
+  return gdlib_rectangle_new_raw(&dlib_intersected_rectangle);
+}
+
 G_END_DECLS
 
 GDlibRectangle *

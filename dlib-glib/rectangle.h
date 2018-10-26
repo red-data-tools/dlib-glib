@@ -34,5 +34,7 @@ void gdlib_rectangle_set_right(GDlibRectangle *rectangle,
 void gdlib_rectangle_set_bottom(GDlibRectangle *rectangle,
                                 glong bottom);
 gboolean gdlib_rectangle_is_empty(GDlibRectangle *rectangle);
+GDlibRectangle *gdlib_rectangle_intersect(GDlibRectangle *rectangle,
+                                          GDlibRectangle *other_rectangle);
 
 G_END_DECLS

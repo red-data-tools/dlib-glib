@@ -42,4 +42,35 @@ class TestRectangle < Test::Unit::TestCase
       rectangle.empty?
     end
   end
+
+  def test_intersect
+    rectangle1 =
+      Dlib::Rectangle.new(1, 1, 3, 3).intersect(Dlib::Rectangle.new(2, 2, 3, 3))
+    assert_equal([2, 2, 3, 3],
+                 [
+                   rectangle1.left,
+                   rectangle1.top,
+                   rectangle1.right,
+                   rectangle1.bottom
+                 ])
+    rectangle2 =
+      Dlib::Rectangle.new(1, 1, 3, 3).intersect(Dlib::Rectangle.new(2, 2, 5, 5))
+    assert_equal([2, 2, 3, 3],
+                 [
+                   rectangle2.left,
+                   rectangle2.top,
+                   rectangle2.right,
+                   rectangle2.bottom
+                 ])
+    rectangle3 =
+      Dlib::Rectangle.new(1, 1, 3, 3).intersect(Dlib::Rectangle.new)
+    assert do
+      rectangle3.empty?
+    end
+    rectangle4 =
+      Dlib::Rectangle.new.intersect(Dlib::Rectangle.new)
+    assert do
+      rectangle4.empty?
+    end
+  end
 end
