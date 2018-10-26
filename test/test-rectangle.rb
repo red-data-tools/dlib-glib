@@ -36,13 +36,6 @@ class TestRectangle < Test::Unit::TestCase
                  ])
   end
 
-  def test_empry
-    rectangle = Dlib::Rectangle.new
-    assert do
-      rectangle.empty?
-    end
-  end
-
   def test_intersect
     rectangle1 =
       Dlib::Rectangle.new(1, 1, 3, 3).intersect(Dlib::Rectangle.new(2, 2, 3, 3))
