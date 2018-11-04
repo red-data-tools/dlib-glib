@@ -66,4 +66,13 @@ class TestRectangle < Test::Unit::TestCase
       rectangle4.empty?
     end
   end
+
+  def test_equal
+    rectangle1 = Dlib::Rectangle.new(1, 1, 3, 3)
+    assert_equal(rectangle1,
+                 Dlib::Rectangle.new(1, 1, 3, 3))
+    rectangle2 = Dlib::Rectangle.new(2, 2, 3, 3)
+    assert_not_equal(rectangle1,
+                     rectangle2)
+  end
 end

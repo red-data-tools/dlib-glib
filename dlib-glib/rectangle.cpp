@@ -275,6 +275,24 @@ gdlib_rectangle_intersect(GDlibRectangle *rectangle,
   return gdlib_rectangle_new_raw(&dlib_intersected_rectangle);
 }
 
+/**
+ * gdlib_rectangle_eual:
+ * @rectangle: A #GDlibRectangle.
+ * @other_rectangle: A #GDlibRectangle to be compared.
+ *
+ * Returns: %TRUE if the rectangle is the same rectangle, %FALSE otherwise.
+ *
+ * Since: 1.0.0
+ */
+gboolean
+gdlib_rectangle_equal(GDlibRectangle *rectangle,
+                      GDlibRectangle *other_rectangle)
+{
+  auto dlib_rectangle = gdlib_rectangle_get_raw(rectangle);
+  auto dlib_other_rectangle = gdlib_rectangle_get_raw(other_rectangle);
+  return *dlib_rectangle == *dlib_other_rectangle;
+}
+
 G_END_DECLS
 
 GDlibRectangle *
