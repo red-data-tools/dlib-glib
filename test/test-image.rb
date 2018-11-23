@@ -25,6 +25,10 @@ class TestImage < Test::Unit::TestCase
     assert_not_equal(rectangles1.size, rectangles2.size)
   end
 
+  def test_n_columns
+    assert_equal(820, @image.n_columns)
+  end
+
   def test_n_rows
     assert_equal(700, @image.n_rows)
   end

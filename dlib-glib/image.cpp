@@ -208,6 +208,21 @@ gdlib_image_find_candidate_object_locations(GDlibImage *image,
 }
 
 /**
+ * gdlib_image_get_n_columns:
+ * @image: A #GDlibImage.
+ *
+ * Returns: The number of columns in the image.
+ *
+ * Since: 1.0.0
+ */
+glong
+gdlib_image_get_n_columns(GDlibImage *image)
+{
+  auto dlib_image = gdlib_image_get_raw(image);
+  return dlib_image->nc();
+}
+
+/**
  * gdlib_image_get_n_rows:
  * @image: A #GDlibImage.
  *
