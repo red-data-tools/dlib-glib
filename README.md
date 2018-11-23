@@ -41,6 +41,12 @@ You can build and install Dlib GLib after you install them:
 % ninja -C build install
 ```
 
+On macOS you need to set the following environment variable:
+
+```console
+% export PKG_CONFIG_PATH=$(brew --prefix libffi)/lib/pkgconfig:/opt/X11/lib/pkgconfig
+```
+
 ### How to build by developers
 
 You need to install the followings before you install Dlib GLib:
@@ -59,6 +65,13 @@ You need to install the followings before you install Dlib GLib:
 % meson build -Dgtk_doc=true
 % ninja -C build
 % ninja -C build install
+```
+
+On macOS you need to set the following environment variable:
+
+```console
+% export PKG_CONFIG_PATH=$(brew --prefix libffi)/lib/pkgconfig:/opt/X11/lib/pkgconfig
+% export XML_CATALOG_FILES="/usr/local/etc/xml/catalog"
 ```
 
 ## Usage
