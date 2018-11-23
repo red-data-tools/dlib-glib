@@ -14,7 +14,7 @@ following code:
 ```ruby
 # Generate bindings at runtime
 require "gi"
-DLIB = GI.load("DLIB")
+DLIB = GI.load("Dlib")
 
 # TODO
 ```
