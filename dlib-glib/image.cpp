@@ -207,6 +207,21 @@ gdlib_image_find_candidate_object_locations(GDlibImage *image,
   return g_list_reverse(rectangles);
 }
 
+/**
+ * gdlib_image_get_n_rows:
+ * @image: A #GDlibImage.
+ *
+ * Returns: The number of rows in the image.
+ *
+ * Since: 1.0.0
+ */
+glong
+gdlib_image_get_n_rows(GDlibImage *image)
+{
+  auto dlib_image = gdlib_image_get_raw(image);
+  return dlib_image->nr();
+}
+
 G_END_DECLS
 
 GDlibImage *

@@ -33,5 +33,6 @@ GDlibImage *gdlib_image_extract_image_chip(GDlibImage *image,
 GList *gdlib_image_find_candidate_object_locations(GDlibImage *image,
                                                    gint min_size,
                                                    gint max_merging_iterations);
+glong gdlib_image_get_n_rows(GDlibImage *image);
 
 G_END_DECLS

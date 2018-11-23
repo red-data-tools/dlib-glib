@@ -24,4 +24,8 @@ class TestImage < Test::Unit::TestCase
     rectangles2 = @image.find_candidate_object_locations(20, 50)
     assert_not_equal(rectangles1.size, rectangles2.size)
   end
+
+  def test_n_rows
+    assert_equal(700, @image.n_rows)
+  end
 end
