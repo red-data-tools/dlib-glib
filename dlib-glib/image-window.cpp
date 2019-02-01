@@ -22,7 +22,7 @@ typedef struct {
 
 G_DEFINE_TYPE_WITH_PRIVATE(GDlibImageWindow, gdlib_image_window, G_TYPE_OBJECT)
 
-#define GDlib_IMAGE_WINDOW_GET_PRIVATE(obj)                     \
+#define GDLIB_IMAGE_WINDOW_GET_PRIVATE(obj)                     \
   (G_TYPE_INSTANCE_GET_PRIVATE((obj),                           \
                                GDLIB_TYPE_IMAGE_WINDOW,         \
                                GDlibImageWindowPrivate))
@@ -35,7 +35,7 @@ enum {
 static void
 gdlib_image_window_finalize(GObject *object)
 {
-  auto priv = GDlib_IMAGE_WINDOW_GET_PRIVATE(object);
+  auto priv = GDLIB_IMAGE_WINDOW_GET_PRIVATE(object);
 
   priv->image_window = nullptr;
 
@@ -48,7 +48,7 @@ gdlib_image_window_set_property(GObject *object,
                                 const GValue *value,
                                 GParamSpec *pspec)
 {
-  auto priv = GDlib_IMAGE_WINDOW_GET_PRIVATE(object);
+  auto priv = GDLIB_IMAGE_WINDOW_GET_PRIVATE(object);
 
   switch (prop_id) {
   case PROP_IMAGE_WINDOW:
@@ -201,6 +201,6 @@ gdlib_image_window_new_raw(std::shared_ptr<dlib::image_window> *dlib_image_windo
 std::shared_ptr<dlib::image_window>
 gdlib_image_window_get_raw(GDlibImageWindow *image_window)
 {
-  auto priv = GDlib_IMAGE_WINDOW_GET_PRIVATE(image_window);
+  auto priv = GDLIB_IMAGE_WINDOW_GET_PRIVATE(image_window);
   return priv->image_window;
 }

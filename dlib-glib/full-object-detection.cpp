@@ -20,7 +20,7 @@ typedef struct {
 
 G_DEFINE_TYPE_WITH_PRIVATE(GDlibFullObjectDetection, gdlib_full_object_detection, G_TYPE_OBJECT)
 
-#define GDlib_FULL_OBJECT_DETECTION_GET_PRIVATE(obj)                     \
+#define GDLIB_FULL_OBJECT_DETECTION_GET_PRIVATE(obj)                     \
   (G_TYPE_INSTANCE_GET_PRIVATE((obj),                                    \
                                GDLIB_TYPE_FULL_OBJECT_DETECTION,         \
                                GDlibFullObjectDetectionPrivate))
@@ -33,7 +33,7 @@ enum {
 static void
 gdlib_full_object_detection_finalize(GObject *object)
 {
-  auto priv = GDlib_FULL_OBJECT_DETECTION_GET_PRIVATE(object);
+  auto priv = GDLIB_FULL_OBJECT_DETECTION_GET_PRIVATE(object);
 
   priv->full_object_detection = nullptr;
 
@@ -46,7 +46,7 @@ gdlib_full_object_detection_set_property(GObject *object,
                                          const GValue *value,
                                          GParamSpec *pspec)
 {
-  auto priv = GDlib_FULL_OBJECT_DETECTION_GET_PRIVATE(object);
+  auto priv = GDLIB_FULL_OBJECT_DETECTION_GET_PRIVATE(object);
 
   switch (prop_id) {
   case PROP_FULL_OBJECT_DETECTION:
@@ -148,6 +148,6 @@ gdlib_full_object_detection_new_raw(std::shared_ptr<dlib::full_object_detection>
 std::shared_ptr<dlib::full_object_detection>
 gdlib_full_object_detection_get_raw(GDlibFullObjectDetection *full_object_detection)
 {
-  auto priv = GDlib_FULL_OBJECT_DETECTION_GET_PRIVATE(full_object_detection);
+  auto priv = GDLIB_FULL_OBJECT_DETECTION_GET_PRIVATE(full_object_detection);
   return priv->full_object_detection;
 }

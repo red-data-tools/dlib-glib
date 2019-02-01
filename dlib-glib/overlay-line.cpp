@@ -19,7 +19,7 @@ typedef struct {
 
 G_DEFINE_TYPE_WITH_PRIVATE(GDlibOverlayLine, gdlib_overlay_line, G_TYPE_OBJECT)
 
-#define GDlib_OVERLAY_LINE_GET_PRIVATE(obj)                     \
+#define GDLIB_OVERLAY_LINE_GET_PRIVATE(obj)                     \
   (G_TYPE_INSTANCE_GET_PRIVATE((obj),                           \
                                GDLIB_TYPE_OVERLAY_LINE,         \
                                GDlibOverlayLinePrivate))
@@ -32,7 +32,7 @@ enum {
 static void
 gdlib_overlay_line_finalize(GObject *object)
 {
-  auto priv = GDlib_OVERLAY_LINE_GET_PRIVATE(object);
+  auto priv = GDLIB_OVERLAY_LINE_GET_PRIVATE(object);
 
   priv->overlay_line = nullptr;
 
@@ -45,7 +45,7 @@ gdlib_overlay_line_set_property(GObject *object,
                                 const GValue *value,
                                 GParamSpec *pspec)
 {
-  auto priv = GDlib_OVERLAY_LINE_GET_PRIVATE(object);
+  auto priv = GDLIB_OVERLAY_LINE_GET_PRIVATE(object);
 
   switch (prop_id) {
   case PROP_OVERLAY_LINE:
@@ -141,6 +141,6 @@ gdlib_overlay_line_new_raw(std::shared_ptr<dlib::image_window::overlay_line> *dl
 std::shared_ptr<dlib::image_window::overlay_line>
 gdlib_overlay_line_get_raw(GDlibOverlayLine *overlay_line)
 {
-  auto priv = GDlib_OVERLAY_LINE_GET_PRIVATE(overlay_line);
+  auto priv = GDLIB_OVERLAY_LINE_GET_PRIVATE(overlay_line);
   return priv->overlay_line;
 }

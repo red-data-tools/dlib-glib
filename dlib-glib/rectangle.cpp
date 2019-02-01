@@ -18,9 +18,9 @@ typedef struct {
 
 G_DEFINE_TYPE_WITH_PRIVATE(GDlibRectangle, gdlib_rectangle, G_TYPE_OBJECT)
 
-#define GDlib_RECTANGLE_GET_PRIVATE(obj)                     \
-  (G_TYPE_INSTANCE_GET_PRIVATE((obj),                        \
-                               GDLIB_TYPE_RECTANGLE,         \
+#define GLIB_RECTANGLE_GET_PRIVATE(obj)                     \
+  (G_TYPE_INSTANCE_GET_PRIVATE((obj),                       \
+                               GDLIB_TYPE_RECTANGLE,        \
                                GDlibRectanglePrivate))
 
 enum {
@@ -31,7 +31,7 @@ enum {
 static void
 gdlib_rectangle_finalize(GObject *object)
 {
-  auto priv = GDlib_RECTANGLE_GET_PRIVATE(object);
+  auto priv = GLIB_RECTANGLE_GET_PRIVATE(object);
 
   priv->rectangle = nullptr;
 
@@ -44,7 +44,7 @@ gdlib_rectangle_set_property(GObject *object,
                              const GValue *value,
                              GParamSpec *pspec)
 {
-  auto priv = GDlib_RECTANGLE_GET_PRIVATE(object);
+  auto priv = GLIB_RECTANGLE_GET_PRIVATE(object);
 
   switch (prop_id) {
   case PROP_RECTANGLE:
@@ -307,6 +307,6 @@ gdlib_rectangle_new_raw(std::shared_ptr<dlib::rectangle> *dlib_rectangle)
 std::shared_ptr<dlib::rectangle>
 gdlib_rectangle_get_raw(GDlibRectangle *rectangle)
 {
-  auto priv = GDlib_RECTANGLE_GET_PRIVATE(rectangle);
+  auto priv = GLIB_RECTANGLE_GET_PRIVATE(rectangle);
   return priv->rectangle;
 }

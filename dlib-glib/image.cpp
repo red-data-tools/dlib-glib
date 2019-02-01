@@ -20,7 +20,7 @@ typedef struct {
 
 G_DEFINE_TYPE_WITH_PRIVATE(GDlibImage, gdlib_image, G_TYPE_OBJECT)
 
-#define GDlib_IMAGE_GET_PRIVATE(obj)                     \
+#define GDLIB_IMAGE_GET_PRIVATE(obj)                     \
   (G_TYPE_INSTANCE_GET_PRIVATE((obj),                    \
                                GDLIB_TYPE_IMAGE,         \
                                GDlibImagePrivate))
@@ -33,7 +33,7 @@ enum {
 static void
 gdlib_image_finalize(GObject *object)
 {
-  auto priv = GDlib_IMAGE_GET_PRIVATE(object);
+  auto priv = GDLIB_IMAGE_GET_PRIVATE(object);
 
   priv->image = nullptr;
 
@@ -46,7 +46,7 @@ gdlib_image_set_property(GObject *object,
                          const GValue *value,
                          GParamSpec *pspec)
 {
-  auto priv = GDlib_IMAGE_GET_PRIVATE(object);
+  auto priv = GDLIB_IMAGE_GET_PRIVATE(object);
 
   switch (prop_id) {
   case PROP_IMAGE:
@@ -251,6 +251,6 @@ gdlib_image_new_raw(std::shared_ptr<dlib::array2d<dlib::rgb_pixel>> *dlib_image)
 std::shared_ptr<dlib::array2d<dlib::rgb_pixel>>
 gdlib_image_get_raw(GDlibImage *image)
 {
-  auto priv = GDlib_IMAGE_GET_PRIVATE(image);
+  auto priv = GDLIB_IMAGE_GET_PRIVATE(image);
   return priv->image;
 }

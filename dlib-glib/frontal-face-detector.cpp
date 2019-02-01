@@ -20,7 +20,7 @@ typedef struct {
 
 G_DEFINE_TYPE_WITH_PRIVATE(GDlibFrontalFaceDetector, gdlib_frontal_face_detector, G_TYPE_OBJECT)
 
-#define GDlib_FRONTAL_FACE_DETECTOR_GET_PRIVATE(obj)                     \
+#define GDLIB_FRONTAL_FACE_DETECTOR_GET_PRIVATE(obj)                     \
   (G_TYPE_INSTANCE_GET_PRIVATE((obj),                                    \
                                GDLIB_TYPE_FRONTAL_FACE_DETECTOR,         \
                                GDlibFrontalFaceDetectorPrivate))
@@ -33,7 +33,7 @@ enum {
 static void
 gdlib_frontal_face_detector_finalize(GObject *object)
 {
-  auto priv = GDlib_FRONTAL_FACE_DETECTOR_GET_PRIVATE(object);
+  auto priv = GDLIB_FRONTAL_FACE_DETECTOR_GET_PRIVATE(object);
 
   priv->frontal_face_detector = nullptr;
 
@@ -46,7 +46,7 @@ gdlib_frontal_face_detector_set_property(GObject *object,
                                          const GValue *value,
                                          GParamSpec *pspec)
 {
-  auto priv = GDlib_FRONTAL_FACE_DETECTOR_GET_PRIVATE(object);
+  auto priv = GDLIB_FRONTAL_FACE_DETECTOR_GET_PRIVATE(object);
 
   switch (prop_id) {
   case PROP_FRONTAL_FACE_DETECTOR:
@@ -141,6 +141,6 @@ gdlib_frontal_face_detector_new_raw(std::shared_ptr<dlib::frontal_face_detector>
 std::shared_ptr<dlib::frontal_face_detector>
 gdlib_frontal_face_detector_get_raw(GDlibFrontalFaceDetector *frontal_face_detector)
 {
-  auto priv = GDlib_FRONTAL_FACE_DETECTOR_GET_PRIVATE(frontal_face_detector);
+  auto priv = GDLIB_FRONTAL_FACE_DETECTOR_GET_PRIVATE(frontal_face_detector);
   return priv->frontal_face_detector;
 }

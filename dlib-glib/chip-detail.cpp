@@ -20,7 +20,7 @@ typedef struct {
 
 G_DEFINE_TYPE_WITH_PRIVATE(GDlibChipDetail, gdlib_chip_detail, G_TYPE_OBJECT)
 
-#define GDlib_CHIP_DETAIL_GET_PRIVATE(obj)                     \
+#define GDLIB_CHIP_DETAIL_GET_PRIVATE(obj)                     \
   (G_TYPE_INSTANCE_GET_PRIVATE((obj),                          \
                                GDLIB_TYPE_CHIP_DETAIL,         \
                                GDlibChipDetailPrivate))
@@ -33,7 +33,7 @@ enum {
 static void
 gdlib_chip_detail_finalize(GObject *object)
 {
-  auto priv = GDlib_CHIP_DETAIL_GET_PRIVATE(object);
+  auto priv = GDLIB_CHIP_DETAIL_GET_PRIVATE(object);
 
   priv->chip_detail = nullptr;
 
@@ -46,7 +46,7 @@ gdlib_chip_detail_set_property(GObject *object,
                                const GValue *value,
                                GParamSpec *pspec)
 {
-  auto priv = GDlib_CHIP_DETAIL_GET_PRIVATE(object);
+  auto priv = GDLIB_CHIP_DETAIL_GET_PRIVATE(object);
 
   switch (prop_id) {
   case PROP_CHIP_DETAIL:
@@ -141,6 +141,6 @@ gdlib_chip_detail_new_raw(std::shared_ptr<dlib::chip_details> *dlib_chip_detail)
 std::shared_ptr<dlib::chip_details>
 gdlib_chip_detail_get_raw(GDlibChipDetail *chip_detail)
 {
-  auto priv = GDlib_CHIP_DETAIL_GET_PRIVATE(chip_detail);
+  auto priv = GDLIB_CHIP_DETAIL_GET_PRIVATE(chip_detail);
   return priv->chip_detail;
 }

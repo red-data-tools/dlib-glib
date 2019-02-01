@@ -21,7 +21,7 @@ typedef struct {
 
 G_DEFINE_TYPE_WITH_PRIVATE(GDlibShapePredictor, gdlib_shape_predictor, G_TYPE_OBJECT)
 
-#define GDlib_SHAPE_PREDICTOR_GET_PRIVATE(obj)                     \
+#define GDLIB_SHAPE_PREDICTOR_GET_PRIVATE(obj)                     \
   (G_TYPE_INSTANCE_GET_PRIVATE((obj),                              \
                                GDLIB_TYPE_SHAPE_PREDICTOR,         \
                                GDlibShapePredictorPrivate))
@@ -34,7 +34,7 @@ enum {
 static void
 gdlib_shape_predictor_finalize(GObject *object)
 {
-  auto priv = GDlib_SHAPE_PREDICTOR_GET_PRIVATE(object);
+  auto priv = GDLIB_SHAPE_PREDICTOR_GET_PRIVATE(object);
 
   priv->shape_predictor = nullptr;
 
@@ -47,7 +47,7 @@ gdlib_shape_predictor_set_property(GObject *object,
                                    const GValue *value,
                                    GParamSpec *pspec)
 {
-  auto priv = GDlib_SHAPE_PREDICTOR_GET_PRIVATE(object);
+  auto priv = GDLIB_SHAPE_PREDICTOR_GET_PRIVATE(object);
 
   switch (prop_id) {
   case PROP_SHAPE_PREDICTOR:
@@ -140,6 +140,6 @@ gdlib_shape_predictor_new_raw(std::shared_ptr<dlib::shape_predictor> *dlib_shape
 std::shared_ptr<dlib::shape_predictor>
 gdlib_shape_predictor_get_raw(GDlibShapePredictor *shape_predictor)
 {
-  auto priv = GDlib_SHAPE_PREDICTOR_GET_PRIVATE(shape_predictor);
+  auto priv = GDLIB_SHAPE_PREDICTOR_GET_PRIVATE(shape_predictor);
   return priv->shape_predictor;
 }
